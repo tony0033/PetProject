@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>>
 <!DOCTYPE HTML>
 <!--
 	Introspect by TEMPLATED
@@ -37,29 +37,29 @@
 	<section id="main">
 		<div class="inner">
 			<section>
-				<h3>�α���</h3>
+				<h3>로그인</h3>
 				<div class="table-wrapper">
 					<form action="memberLogin">
 						<table class="alt">
 							<tbody>
 								<tr>
-									<td>���̵�</td>
+									<td>아이디</td>
 									<td><input type="text" name="id"></td>
 								</tr>
 								<tr>
-									<td>��й�ȣ</td>
+									<td>비밀번호</td>
 									<td><input type="text" name="pw"></td>
 								</tr>
 								<tr>
-									<td colspan="2"><input type="submit" value="�α���"
+									<td colspan="2"><input type="submit" value="로그인"
 										class="alt"></td>
 								</tr>
 							</tbody>
 							<tfoot>
 								<tr>
-									<td colspan="2"><a href="memberInsert.jsp">ȸ������ | </a><a
-										href="memberSearchId.jsp">���̵� ã�� | </a><a
-										href="memberSearchPw.jsp">��й�ȣ ã��</a></td>
+									<td colspan="2"><a href="memberInsert.jsp">회원가입 | </a><a
+										href="memberSearchId.jsp">아이디 찾기 | </a><a
+										href="memberSearchPw.jsp">비밀번호 찾기</a></td>
 								</tr>
 							</tfoot>
 						</table>

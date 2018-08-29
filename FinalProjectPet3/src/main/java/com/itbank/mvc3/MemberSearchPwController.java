@@ -9,12 +9,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class memberLoginController {
+public class MemberSearchPwController {
 
 	@Autowired
 	MemberDAO dao;
 	
-	@RequestMapping("memberLogin")
+	@RequestMapping("memberSearchPw")
 	public String login(HttpServletRequest request, Model model, HttpSession session) {
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");

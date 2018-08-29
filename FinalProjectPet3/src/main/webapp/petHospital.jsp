@@ -6,16 +6,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 </head>
-<body>검색활 아이디를 입력하세요..>>>>
-<form action="select.do">
-아이디<input type="text" name="id"><br>
-<input type="submit">
-</form>
-
-<form action="select.do">
-<input type="submit" value="전체검색">
-</form>
-
-
+<body>
+	<form action="petHospital">
+		동물 병원 검색할 지역 : <input type="text" name="petHospital"> 
+		<input type="submit" value="확인">
+	</form>
 </body>
 </html>

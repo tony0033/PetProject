@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class memberSearchPwController {
+public class MemberLoginController {
 
 	@Autowired
 	MemberDAO dao;
