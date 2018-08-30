@@ -24,6 +24,7 @@ public class PetHospitalController {
         try {
             String text = URLEncoder.encode((hospital + " 동물병원"), "UTF-8");
             String apiURL = "https://openapi.naver.com/v1/search/local.json?query="+ text; // json 결과
+            
             URL url = new URL(apiURL);
             HttpURLConnection con = (HttpURLConnection)url.openConnection();
             con.setRequestMethod("GET");
@@ -31,11 +32,13 @@ public class PetHospitalController {
             con.setRequestProperty("X-Naver-Client-Secret", clientSecret);
             int responseCode = con.getResponseCode();
             BufferedReader br;
+            
             if(responseCode==200) { // 정상 호출
                 br = new BufferedReader(new InputStreamReader(con.getInputStream()));
             } else {  // 에러 발생
                 br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
             }
+            
             String inputLine;
             StringBuffer response = new StringBuffer();
             while ((inputLine = br.readLine()) != null) {
