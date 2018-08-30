@@ -11,5 +11,6 @@
 		동물 병원 검색할 지역 : <input type="text" name="petHospital"> 
 		<input type="submit" value="확인">
 	</form>
+	${test }
 </body>
 </html>

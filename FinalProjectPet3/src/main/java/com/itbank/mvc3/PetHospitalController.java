@@ -9,6 +9,7 @@ import java.net.URLEncoder;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller	//동물병원 주소 검색 API
@@ -16,7 +17,7 @@ public class PetHospitalController {
 
 	@RequestMapping("petHospital")
 	
-    public String PetHospital(HttpServletRequest request) {
+    public String PetHospital(HttpServletRequest request, Model model) {
 		String hospital = request.getParameter("petHospital");
 		
         String clientId = "jaG8KkSiXrEU9enGCL8N";	//애플리케이션 클라이언트 아이디값;
@@ -46,6 +47,7 @@ public class PetHospitalController {
             }
             br.close();
             System.out.println(response.toString());
+            model.addAttribute("test", response.toString());
         } catch (Exception e) {
             System.out.println(e);
         }        
