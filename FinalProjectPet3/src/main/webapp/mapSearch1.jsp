@@ -16,18 +16,18 @@
 	<div id="map" style="width: 100%; height: 400px;"></div>
 	<script>
 	
-	/* var markerList = [];
+	var markerList = [];
 		//주소 검색 기능
-		var marker */
+		var marker ;
 				
 				var map = new naver.maps.Map('map');	//좌표로 장소 이동
 			var myaddress = [ '서울특별시 성북구 보문동5가 3-1', '서울특별시 중구 다산동 336-3 명덕빌딩 1층']; // 도로명 주소나 지번 주소만 가능 (건물명 불가!!!!)
-	/* 	for(var i = 0; i<2 ;i++){ 
+		for(var i = 0; i<2 ;i++){ 
 			var addr = myaddress[i];						
-			*/
+			
 			
 			naver.maps.Service.geocode({
-				address : myaddress
+				address : addr
 				
 			}, function(status, response) {
 				if (status !== naver.maps.Service.Status.OK) {
@@ -44,13 +44,14 @@
 				map.setCenter(myaddr); // 검색된 좌표로 지도 이동
 				
 	
-				for (var i = 0, ii = myaddress.length; i < ii; i++) {
 				// 마커 표시
-				var marker = new naver.maps.Marker({
-					position : myaddr[i],
+				marker = new naver.maps.Marker({
+					position : myaddr,
 					map : map
 				});
-				}
+				markerList.push(marker);
+				
+				
 				/* markerList.push(marker); */
 				// 마커 클릭 이벤트 처리
 				naver.maps.Event.addListener(marker, "click", function(e) {
@@ -65,7 +66,7 @@
 					content : '<h4> [네이버 개발자센터]</h4><a href="https://developers.naver.com" target="_blank"><img src="https://developers.naver.com/inc/devcenter/images/nd_img.png"></a>'
 				});
 			});
- 		/* }  */
+ 		 } 
 		
 	</script>
 </body>
