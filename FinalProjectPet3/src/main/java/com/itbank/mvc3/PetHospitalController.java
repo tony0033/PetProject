@@ -43,11 +43,11 @@ public class PetHospitalController {
             String inputLine;
             StringBuffer response = new StringBuffer();
             while ((inputLine = br.readLine()) != null) {
-                response.append(inputLine);
+                response.append(inputLine);	//나온 모든 값을 넣어준다.
             }
             br.close();
-            System.out.println(response.toString());
-            model.addAttribute("test", response.toString());
+            System.out.println(response.toString());	//저장된 값을 console에 출력
+            model.addAttribute("petHospital", response.toString());	//이름을 petHospital 지정
         } catch (Exception e) {
             System.out.println(e);
         }        
