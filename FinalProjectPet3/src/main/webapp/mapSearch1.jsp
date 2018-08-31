@@ -1,14 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
-<!-- // ³×ÀÌ¹ö Áöµµ - Æ¯Á¤ ÁÖ¼Ò¿¡ ¸¶Ä¿ Ç¥½Ã - web
-// https://openapi.map.naver.com/openapi/v3/maps.js?clientId=YOUR_CLIENT_ID&submodules=geocoder
-// À§¿¡¼­ YOUR_CLIENT_ID´Â ¾ÖÇÃ¸®ÄÉÀÌ¼Ç µî·Ï½Ã ¹ß±ŞµÇ´Â 20ÀÚ¸® ¿µ¹® ´ë¹®ÀÚ¿Í ¼Ò¹®ÀÚ Á¶ÇÕÀÔ´Ï´Ù ¿¹) VagkBddrZ5JdHbcd5DfK (O)
-// ±¸ APIÅ° (32±ÛÀÚÀÇ ¿µ¾î ¼Ò¹®ÀÚ¿Í ¼ıÀÚ Á¶ÇÕ)Àº »ç¿ëºÒ°¡ ¿¹) f8a20b93f0bf315be90d4a35145ef0fa (X) -->
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!-- // ë„¤ì´ë²„ ì§€ë„ - íŠ¹ì • ì£¼ì†Œì— ë§ˆì»¤ í‘œì‹œ - web
+// https://openapi.map.naver.com/openapi/v3/maps.js?clientId=YOUR_CLIENT_ID&submodules=geocoder -->
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>³×ÀÌ¹ö Áöµµ API - ÁÖ¼Ò·Î Áöµµ Ç¥½ÃÇÏ±â</title>
+<title>ë„¤ì´ë²„ ì§€ë„ API - ì£¼ì†Œë¡œ ì§€ë„ í‘œì‹œí•˜ê¸°</title>
 <script type="text/javascript"
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=6q8NtRx8aBLV8lmz00Wd&submodules=geocoder"></script>
 </head>
@@ -16,44 +14,35 @@
 	<div id="map" style="width: 100%; height: 400px;"></div>
 	<script>
 	
-	var markerList = [];
-		//ÁÖ¼Ò °Ë»ö ±â´É
-		var marker ;
-				
-				var map = new naver.maps.Map('map');	//ÁÂÇ¥·Î Àå¼Ò ÀÌµ¿
-			var myaddress = [ '¼­¿ïÆ¯º°½Ã ¼ººÏ±¸ º¸¹®µ¿5°¡ 3-1', '¼­¿ïÆ¯º°½Ã Áß±¸ ´Ù»êµ¿ 336-3 ¸í´öºôµù 1Ãş']; // µµ·Î¸í ÁÖ¼Ò³ª Áö¹ø ÁÖ¼Ò¸¸ °¡´É (°Ç¹°¸í ºÒ°¡!!!!)
-		for(var i = 0; i<2 ;i++){ 
-			var addr = myaddress[i];						
-			
-			
+		//ì£¼ì†Œ ê²€ìƒ‰ ê¸°ëŠ¥
+		var marker;
+		var map = new naver.maps.Map('map'); //ì¢Œí‘œë¡œ ì¥ì†Œ ì´ë™
+		var myaddress = [ 'ì„œìš¸íŠ¹ë³„ì‹œ ì„±ë¶êµ¬ ë³´ë¬¸ë™5ê°€ 3-1', 'ì„œìš¸íŠ¹ë³„ì‹œ ì¤‘êµ¬ ë‹¤ì‚°ë™ 336-3 ëª…ë•ë¹Œë”© 1ì¸µ' ]; // ë„ë¡œëª… ì£¼ì†Œë‚˜ ì§€ë²ˆ ì£¼ì†Œë§Œ ê°€ëŠ¥ (ê±´ë¬¼ëª… ë¶ˆê°€!!!!)
+		for (var i = 0; i < 2; i++) {
+			var addr = myaddress[i];
+	
 			naver.maps.Service.geocode({
 				address : addr
-				
 			}, function(status, response) {
 				if (status !== naver.maps.Service.Status.OK) {
-					return alert(myaddress + 'ÀÇ °Ë»ö °á°ú°¡ ¾ø°Å³ª ±âÅ¸ ³×Æ®¿öÅ© ¿¡·¯');
+					return alert(myaddress + 'ì˜ ê²€ìƒ‰ ê²°ê³¼ê°€ ì—†ê±°ë‚˜ ê¸°íƒ€ ë„¤íŠ¸ì›Œí¬ ì—ëŸ¬');
 				}
 				var result = response.result;
-				// °Ë»ö °á°ú °¹¼ö: result.total
-				// Ã¹¹øÂ° °á°ú °á°ú ÁÖ¼Ò: result.items[0].address
-				// Ã¹¹øÂ° °Ë»ö °á°ú ÁÂÇ¥: result.items[0].point.y, result.items[0].point.x
+				// ê²€ìƒ‰ ê²°ê³¼ ê°¯ìˆ˜: result.total
+				// ì²«ë²ˆì§¸ ê²°ê³¼ ê²°ê³¼ ì£¼ì†Œ: result.items[0].address
+				// ì²«ë²ˆì§¸ ê²€ìƒ‰ ê²°ê³¼ ì¢Œí‘œ: result.items[0].point.y, result.items[0].point.x
 				var myaddr = new naver.maps.Point(result.items[0].point.x, result.items[0].point.y);
 	
+				map.setCenter(myaddr); // ê²€ìƒ‰ëœ ì¢Œí‘œë¡œ ì§€ë„ ì´ë™
 	
-	
-				map.setCenter(myaddr); // °Ë»öµÈ ÁÂÇ¥·Î Áöµµ ÀÌµ¿
-				
-	
-				// ¸¶Ä¿ Ç¥½Ã
+				// ë§ˆì»¤ í‘œì‹œ
 				marker = new naver.maps.Marker({
 					position : myaddr,
 					map : map
 				});
-				markerList.push(marker);
-				
-				
+	
 				/* markerList.push(marker); */
-				// ¸¶Ä¿ Å¬¸¯ ÀÌº¥Æ® Ã³¸®
+				// ë§ˆì»¤ í´ë¦­ ì´ë²¤íŠ¸ ì²˜ë¦¬
 				naver.maps.Event.addListener(marker, "click", function(e) {
 					if (infowindow.getMap()) {
 						infowindow.close();
@@ -61,13 +50,12 @@
 						infowindow.open(map, marker);
 					}
 				});
-				// ¸¶Å© Å¬¸¯½Ã ÀÎÆ÷À©µµ¿ì ¿ÀÇÂ
+				// ë§ˆí¬ í´ë¦­ì‹œ ì¸í¬ìœˆë„ìš° ì˜¤í”ˆ
 				var infowindow = new naver.maps.InfoWindow({
-					content : '<h4> [³×ÀÌ¹ö °³¹ßÀÚ¼¾ÅÍ]</h4><a href="https://developers.naver.com" target="_blank"><img src="https://developers.naver.com/inc/devcenter/images/nd_img.png"></a>'
+					content : '<h4> [ë„¤ì´ë²„ ê°œë°œìì„¼í„°]</h4><a href="https://developers.naver.com" target="_blank"><img src="https://developers.naver.com/inc/devcenter/images/nd_img.png"></a>'
 				});
 			});
- 		 } 
-		
+		}
 	</script>
 </body>
 </html>
