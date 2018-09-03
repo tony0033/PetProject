@@ -8,9 +8,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:forEach items="${link}" var="link">
-	${link}
+<script>
+	var items= new Array(${title});
+	for (var i = 0; i < items.length; i++){
+		document.write(items[i]);
+	}
+	
+	
+	<c:forEach items="${title}" var="title">
+	document.write(${title});
+	document.write(${address[i]});
 	</c:forEach>
-
+	document.write(${title[1]});
+	document.write(${address[1]});
+</script>
 </body>
 </html>

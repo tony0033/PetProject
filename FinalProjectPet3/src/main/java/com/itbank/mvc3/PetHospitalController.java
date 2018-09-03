@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -21,8 +20,7 @@ import com.google.gson.JsonParser;
 public class PetHospitalController {
 
 	@RequestMapping("petHospital")
-	
-    public @ResponseBody String PetHospital(HttpServletRequest request, Model model) {
+    public String PetHospital(HttpServletRequest request, Model model) {
 		String hospital = request.getParameter("petHospital");
 		
         String clientId = "jaG8KkSiXrEU9enGCL8N";	//애플리케이션 클라이언트 아이디값;
@@ -52,14 +50,14 @@ public class PetHospitalController {
             }
             br.close();
             
-            System.out.println(response.toString());	//저장된 값을 console에 출력
-            String hospitalAddr = response.toString();	//동물병원 정보 값들을 String으로 저장
             
+            String hospitalAddr = response.toString();	//동물병원 정보 값들을 String으로 저장
             
             //object 안에 object가 있는 경우
             JsonParser Parser = new JsonParser();	//파싱을 위해 JsonParser 객체를 만듬
             JsonObject JsonObj = (JsonObject) Parser.parse(hospitalAddr);	//object에 key값이 있어 JsonParser를 Object로 먼저 파싱
             JsonArray itemsArray = (JsonArray) JsonObj.get("items");	//object에서 key(items)를 get하여 해당하는 object를 array로 저장
+            System.out.println(JsonObj);
 
             //key의  value를 가져와 저장하기 위한 배열 생성
             String[] title= new String[itemsArray.size()];
@@ -68,7 +66,7 @@ public class PetHospitalController {
             String[] address= new String[itemsArray.size()];
             String[] roadAddress= new String[itemsArray.size()];
             
-            ////key에 해당하는 value값 추출
+            //key에 해당하는 value값 추출
             for (int i = 0; i < itemsArray.size(); i++) {
 				JsonObject items = (JsonObject) itemsArray.get(i);	//array에서 object에 해당하는 key로 value를 추출할 수 있게 일렬로 정렬
 				title[i] = String.valueOf(items.get("title")).replaceAll("<b>", " ").replaceAll("</b>", "");
@@ -76,18 +74,17 @@ public class PetHospitalController {
 				telephone[i] = String.valueOf(items.get("telephone"));
 				address[i] = String.valueOf(items.get("address"));
 				roadAddress[i] = String.valueOf(items.get("roadAddress"));
-				System.out.println(title[i]);
-				
 			}
-            model.addAttribute("title", title);	//이름을 title로 지정
-            model.addAttribute("link", link);
-            model.addAttribute("telephone", telephone);
-            model.addAttribute("address", address);
-            model.addAttribute("roadAddress", roadAddress);
+            
+            model.addAttribute("title", title);				//이름을 title로 지정
+            model.addAttribute("link", link);				//이름을 link로 지정
+            model.addAttribute("telephone", telephone);		//이름을 telephone로 지정
+            model.addAttribute("address", address);			//이름을 address로 지정
+            model.addAttribute("roadAddress", roadAddress);	//이름을 roadAddress로 지정
             
         } catch (Exception e) {
             System.out.println(e);
         }        
-        return "petHospital";
+        return "mapSearch";
     }
 }
