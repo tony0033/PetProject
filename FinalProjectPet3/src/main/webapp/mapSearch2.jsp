@@ -44,7 +44,7 @@
 				var myaddr = new naver.maps.Point(result.items[0].point.x, result.items[0].point.y);
 	
 				map.setCenter(myaddr); //지정한 좌표로 지도의 중심점을 설정
-	console.log(result.total);
+	
 				
 	
 					// 마커 표시
@@ -55,6 +55,9 @@
 					var contentString = [
 						'<div class="iw_inner">',
 						'   <h3>' + title+ '</h3>',
+						'   <p>서울특별시 중구 태평로1가 31 | 서울특별시 중구 세종대로 110 서울특별시청<br />',
+						'       <a href="http://www.seoul.go.kr" target="_blank">www.seoul.go.kr/</a>',
+						'   </p>',
 						'</div>'
 					].join('');
 	console.log(contentString);
