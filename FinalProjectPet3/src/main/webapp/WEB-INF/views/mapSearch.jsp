@@ -23,14 +23,17 @@
 		var hospitalAddr = '${hospitalAddr}'; //petHospital의 값을 가져옴
 		var myaddress = JSON.parse(hospitalAddr); //JSON.parse()를 사용하여 문자열을 자바스크립트 객체로 변환
 	
-		
 		var infoWindows = []; //정보창 배열
+		var contentStrings = [];
 		// 도로명 주소나 지번 주소만 가능 (건물명 불가!!!!)
 		for (var j = 0; j < myaddress.display; j++) { //검색된 갯수만큼
 			var addr = myaddress.items[j].address; //검색된 주소들
 			var title = myaddress.items[j].title;
-	console.log(title);
-	console.log(addr);
+			contentStrings.push([
+						'<div class="iw_inner">',
+						'   <h3>' + title+ '</h3>',
+						'</div>'
+					].join(''));
 			naver.maps.Service.geocode({
 				address : addr
 			}, function(status, response) {
@@ -44,7 +47,6 @@
 				var myaddr = new naver.maps.Point(result.items[0].point.x, result.items[0].point.y);
 	
 				map.setCenter(myaddr); //지정한 좌표로 지도의 중심점을 설정
-	console.log(result.total);
 				
 	
 					// 마커 표시
@@ -52,17 +54,14 @@
 						position : myaddr, //마커를 표시할 위치
 						map : map //마커를 표시할 지도
 					});
-					var contentString = [
-						'<div class="iw_inner">',
-						'   <h3>' + title+ '</h3>',
-						'</div>'
-					].join('');
-	console.log(contentString);
+					console.log(title);	
 					// 마크 클릭시 정보창
+					for (var l = 0; l < markers.length; l++) {
+						var contentString = contentStrings[l];
 					var infoWindow = new naver.maps.InfoWindow({
 						content : contentString
 					});
-	
+					}
 					markers.push(marker); // 배열에 생성된 마커를 추가
 					infoWindows.push(infoWindow); // 배열에 생성된 정보창을 추가
 	
