@@ -112,6 +112,7 @@
 					}
 				}
 	
+				
 				//클릭시 getClickHandler에서 발생한 이벤트를 받아 핸들러를 실행하는 리스너
 				for (var i = 0;  i < markers.length; i++) {
 					naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i));
