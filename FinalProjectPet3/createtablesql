@@ -17,3 +17,10 @@ price varchar(1000),
 img varchar(1000),
 other varchar(1000)
 );
+
+create table diary (
+no int primary key, 
+title varchar(50),
+calendar varchar(30),
+content varchar(1000)
+);

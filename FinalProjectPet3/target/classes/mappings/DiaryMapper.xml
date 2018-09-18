@@ -20,7 +20,7 @@
 	</select>
 
 	<insert id="insert" parameterType="diaryDTO">
-		INSERT INTO diary VALUES(no.NEXTVAL,#{content})	
+		INSERT INTO diary VALUES(no.NEXTVAL,#{title},#{date},#{content})	
 	</insert>
 
 	<update id="update" parameterType="diaryDTO">
