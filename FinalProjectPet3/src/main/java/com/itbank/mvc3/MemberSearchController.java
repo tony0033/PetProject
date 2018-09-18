@@ -9,13 +9,34 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class MemberSearchPwController {
+public class MemberSearchController {
 
 	@Autowired
 	MemberDAO dao;
 	
+	@RequestMapping("memberSearchId")
+	public String searchid(HttpServletRequest request, Model model, HttpSession session) {
+		String name = request.getParameter("name");
+		String tel = request.getParameter("tel");
+		
+		try {
+		MemberDTO memberDTO2 = dao.selectId(tel);
+		if(memberDTO2.getId().equals(name) && memberDTO2.getPw().equals(tel)) {
+			String id = memberDTO2.getId();
+			model.addAttribute("name", name);
+			model.addAttribute("id", id);
+			return "membersearchid";
+		}
+		else {
+			return "memberSearchFail";
+		}
+		}
+		catch (Exception e) {
+			return "memberSearchFail";
+		}
+	}
 	@RequestMapping("memberSearchPw")
-	public String login(HttpServletRequest request, Model model, HttpSession session) {
+	public String serachpw(HttpServletRequest request, Model model, HttpSession session) {
 		String id = request.getParameter("id");
 		String name = request.getParameter("name");
 		String tel = request.getParameter("tel");
@@ -39,8 +60,7 @@ public class MemberSearchPwController {
 			
 			
 		}
-	}
-
+}
 
 
 
