@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <!--
 	Introspect by TEMPLATED
@@ -33,7 +33,7 @@
 		<div class="inner">
 			<a href="main.jsp" class="logo">introspect</a>
 			<nav id="nav">
-				<a href="main.jsp">Home</a> <a href="memberLogin.jsp">Login</a><a
+				<a href="main.jsp">Home</a> <a href="memberLogin.jsp" id="loginout">Login</a><a
 					href="generic.jsp">Generic</a> <a href="elements.jsp">Elements</a>
 			</nav>
 		</div>
@@ -75,16 +75,17 @@
 								</tr>
 								<tr>
 									<td>생년월일</td>
-									<td><input type="text" name="birth"><input type="hidden" name="pethospital" value="null"></td>
-									
+									<td><input type="text" name="birth"><input
+										type="hidden" name="pethospital" value="null"></td>
+
 								</tr>
-								
+
 								<tr>
 									<td colspan="2"><input type="submit" value="회원가입"
 										class="alt"></td>
 								</tr>
 							</tbody>
-							<tfoot>	
+							<tfoot>
 							</tfoot>
 						</table>
 					</form>

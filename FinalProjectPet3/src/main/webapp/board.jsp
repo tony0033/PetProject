@@ -28,7 +28,7 @@
 		<div class="inner">
 			<a href="main.jsp" class="logo">introspect</a>
 			<nav id="nav">
-				<a href="memberLogin.jsp">로그인</a> <a href="petHospital.jsp">동물병원
+				<a href="memberLogin.jsp" id="loginout">로그인</a> <a href="petHospital.jsp">동물병원
 					찾기</a><a href="board.jsp">게시판</a><a href="generic.jsp">Generic</a> <a
 					href="elements.jsp">Elements</a>
 			</nav>
@@ -112,7 +112,7 @@
 						<input type="email" name="bDate" value="<%=today%>"
 							readonly="readonly" />
 					</div>
-					<div class="12u$">
+					<div class="12u$"> 
 						<div class="select-wrapper">
 							<select name="bCategory" id="demo-category">
 								<option value="">- 분류 -</option>
