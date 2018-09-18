@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="diarySQL">
+
+	<select id="select" parameterType="diaryDTO" resultType="diaryDTO">
+		SELECT * from diary where no = #{no}
+	</select>
+
+	<resultMap type="diaryDTO" id="rsMap">
+		<result property="no" column="no" />
+		<result property="title" column="title" />
+		<result property="date" column="date" />
+		<result property="content" column="content" />
+	</resultMap>
+
+	<select id="selectAll" resultMap="rsMap">
+		SELECT * FROM diary
+	</select>
+
+	<insert id="insert" parameterType="diaryDTO">
+		INSERT INTO diary VALUES(no.NEXTVAL,#{content})	
+	</insert>
+
+	<update id="update" parameterType="diaryDTO">
+		UPDATE diary SET content=#{content}
+		WHERE id = #{no}
+	</update>
+
+	<delete id="delete" parameterType="diaryDTO">
+		DELETE FROM diary WHERE no = #{no}
+	</delete>
+
+</mapper>

@@ -10,10 +10,19 @@ public class InsertController {
 	@Autowired
 	MemberDAO dao;
 	
+	@Autowired
+	DiaryDAO diarydao;
+	
 	@RequestMapping("insert.do")
 	public String insert( MemberDTO memberDTO) {
 		dao.insert(memberDTO);
 		return "redirect:main.jsp";
+	}
+	
+	@RequestMapping("diaryinsert.do")
+	public String insert(DiaryDTO diaryDTO) {
+		diarydao.insert(diaryDTO);
+		return "insertResult";
 	}
 	
 }

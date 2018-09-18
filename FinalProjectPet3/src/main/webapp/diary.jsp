@@ -18,7 +18,7 @@
 <script src="resources/js/skel.min.js"></script>
 <script src="resources/js/util.js"></script>
 <script src="resources/js/main.js"></script>
-				<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script> 
 <script type="text/javascript" src="resources/editor/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -51,11 +51,22 @@ $(function(){
     
     
         $( "#datepicker" ).datepicker();
-  
           $( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
        
 })
 </script>
+<style type="text/css">
+input{
+width: 350px !important;
+display: inline !important; 
+border: 1px solid gray !important;
+height: 30px !important;
+}
+#date{
+text-align: right;
+}
+
+</style>
 </head>
 <body>
 
@@ -64,7 +75,7 @@ $(function(){
 		<div class="inner">
 			<a href="main.jsp" class="logo">introspect</a>
 			<nav id="nav">
-				<a href="main.jsp">Home</a> <a href="memberLogin.jsp" id="login">Login</a><a
+				<a href="main.jsp">Home</a> <a href="memberLogin.jsp" id="loginout" >Login</a><a
 					href="generic.jsp">Generic</a> <a href="elements.jsp">Elements</a>
 			</nav>
 		</div>
@@ -77,9 +88,9 @@ $(function(){
 			<section>
 				<h3>일기 작성</h3>	
 <form action="bbsinsert.do" method="post" id="frm">
-				제목: <input type="text" name="title"  > 날짜: <input type="text" id="datepicker" name="date">
-
-    <textarea name="content" id="smarteditor" rows="10" cols="100" style="width:766px; height:412px;"></textarea>
+				제목: <input type="text" name="title"> 날짜: <input type="text" id="datepicker" name="date" >
+				<br><br><br>
+    <textarea name="content" id="smarteditor" rows="10" cols="100" style="width:800px; height:412px;"></textarea>
     <input type="button" id="savebutton" value="서버전송" />
 </form>
 
