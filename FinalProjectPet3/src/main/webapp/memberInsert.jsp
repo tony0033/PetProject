@@ -33,7 +33,7 @@
 		<div class="inner">
 			<a href="main.jsp" class="logo">introspect</a>
 			<nav id="nav">
-				<a href="main.jsp">Home</a> <a href="memberLogin.jsp">Login</a><a
+				<a href="main.jsp">Home</a> <a href="memberLogin.jsp" id="loginout">Login</a><a
 					href="generic.jsp">Generic</a> <a href="elements.jsp">Elements</a>
 			</nav>
 		</div>
