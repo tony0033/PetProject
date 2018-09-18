@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="proSQL">
+
+	<select id="select" parameterType="bbsDTO" resultType="bbsDTO">
+		SELECT * from bbs where bCategory = #{bCategory}
+	</select>
+
+	<resultMap type="bbsDTO" id="rsMap">
+		<result property="bId" column="bId" />
+		<result property="bTitle" column="bTitle" />
+		<result property="bDate" column="bDate" />
+		<result property="bCategory" column="bCategory" />
+		<result property="bContent" column="bContent" />
+	</resultMap>
+
+	<select id="selectAll" resultMap="rsMap">
+		SELECT * FROM bbs
+	</select>
+
+	<insert id="insert" parameterType="bbsDTO">
+		INSERT INTO bbs VALUES(#{bId},#{bTitle},#{bDate},#{bCategory},#{bContent})	
+	</insert>
+
+	<update id="update" parameterType="bbsDTO">
+		UPDATE bbs SET bTitle=#{bTitle},bDate=#{bDate},bCategory=#{bCategory},bContent=#{bContent}
+		WHERE bId = #{bId}
+	</update>
+
+	<delete id="delete" parameterType="bbsDTO">
+		DELETE FROM bbs WHERE bTitle = #{bTitle}
+	</delete>
+
+</mapper>

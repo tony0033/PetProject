@@ -17,3 +17,11 @@ price varchar(1000),
 img varchar(1000),
 other varchar(1000)
 );
+
+create table bbs (
+bId varchar(30),
+bTitle varchar(50),
+bDate varchar(30),
+bCategory varchar(30),
+bContent varchar(1000)
+);
