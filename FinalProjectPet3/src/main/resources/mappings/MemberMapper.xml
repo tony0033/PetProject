@@ -11,8 +11,12 @@
 	<resultMap type="memDTO" id="rsMap">
 		<result property="id" column="id" />
 		<result property="pw" column="pw" />
+		<result property="nickname" column="nickname" />
 		<result property="name" column="name" />
+		<result property="address" column="address" />
 		<result property="tel" column="tel" />
+		<result property="birth" column="birth" />
+		<result property="pethospital" column="pethospital" />
 	</resultMap>
 
 	<select id="selectAll" resultMap="rsMap">
@@ -20,12 +24,11 @@
 	</select>
 
 	<insert id="insert" parameterType="memDTO">
-		INSERT INTO member VALUES(#{id},#{pw},#{name},#{tel})	
+		INSERT INTO MEMBER VALUES(#{id},#{pw},#{nickname},#{name},#{address},#{tel},#{birth},#{pethospital})	
 	</insert>
 
 	<update id="update" parameterType="memDTO">
-		UPDATE member SET tel=#{tel}
-		WHERE id = #{id}
+		UPDATE member SET tel = #{tel}, address = #{address} WHERE id = #{id}
 	</update>
 
 	<delete id="delete" parameterType="memDTO">

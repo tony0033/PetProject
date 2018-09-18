@@ -17,18 +17,30 @@ public class MemberSearchPwController {
 	@RequestMapping("memberSearchPw")
 	public String login(HttpServletRequest request, Model model, HttpSession session) {
 		String id = request.getParameter("id");
-		String pw = request.getParameter("pw");
-		
+		String name = request.getParameter("name");
+		String tel = request.getParameter("tel");
+		try {
+			
 		MemberDTO memberDTO2 = dao.selectId(id);
-		if(memberDTO2.getId().equals(id) && memberDTO2.getPw().equals(pw)) {
-			session.setAttribute("id", id);
-			return "main";
+		if(memberDTO2.getId().equals(id) && memberDTO2.getTel().equals(tel)&& memberDTO2.getName().equals(name))  {
+			String pw = memberDTO2.getPw();
+			model.addAttribute("id", id);
+			model.addAttribute("pw", pw);
+			return "membersearchpw";
+			
 		}
 		else {
 			return "memberLoginFail";
 		}
+		}
+		catch (Exception e) {
+			return "memberLoginFail";
+		}
+			
+			
+		}
 	}
-}
+
 
 
 

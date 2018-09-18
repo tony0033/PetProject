@@ -1,1 +1,13 @@
 select * from member;
+
+create table member( 
+id varchar(30) primary key,
+pw varchar(30),
+nickname varchar(30) not null unique,
+name varchar(20),
+tel varchar(30),
+address varchar(150),
+birth varchar(20),
+pethospital varchar(150)
+);
+
