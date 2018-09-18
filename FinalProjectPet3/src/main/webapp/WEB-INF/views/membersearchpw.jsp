@@ -42,7 +42,7 @@
 						<table class="alt">
 							<tbody>
 								<tr>
-									<td>로그인에 실패하셨습니다.<br>아이디 혹은 비밀번호를 잘못 입력하셨습니다.<br>
+									<td>${id }님의 비밀번호는 ${pw }입니다.<br>
 									<a href="memberLogin.jsp">되돌아가기</a>
 									</td>
 								</tr>

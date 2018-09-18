@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>>
 <!DOCTYPE HTML>
 <!--
 	Introspect by TEMPLATED
@@ -18,6 +18,13 @@
 <script src="resources/js/skel.min.js"></script>
 <script src="resources/js/util.js"></script>
 <script src="resources/js/main.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+      $( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+  } );
+  </script>
 </head>
 <body>
 
@@ -37,22 +44,47 @@
 	<section id="main">
 		<div class="inner">
 			<section>
+				<h3>íšŒì›ê°€ì…</h3>
 				<div class="table-wrapper">
-					<form action="memberLogin">
+					<form action="insert.do">
 						<table class="alt">
 							<tbody>
 								<tr>
-									<td>·Î±×ÀÎ¿¡ ½ÇÆĞÇÏ¼Ì½À´Ï´Ù.<br>¾ÆÀÌµğ È¤Àº ºñ¹Ğ¹øÈ£¸¦ Àß¸ø ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù.<br>
-									<a href="memberLogin.jsp">µÇµ¹¾Æ°¡±â</a>
-									</td>
+									<td>ì•„ì´ë””</td>
+									<td><input type="text" name="id"></td>
+								</tr>
+								<tr>
+									<td>ë¹„ë°€ë²ˆí˜¸</td>
+									<td><input type="password" name="pw"></td>
+								</tr>
+								<tr>
+									<td>ë‹‰ë„¤ì„</td>
+									<td><input type="text" name="nickname"></td>
+								</tr>
+								<tr>
+									<td>ì´ë¦„</td>
+									<td><input type="text" name="name"></td>
+								</tr>
+								<tr>
+									<td>ì£¼ì†Œ</td>
+									<td><input type="text" name="address"></td>
+								</tr>
+								<tr>
+									<td>ì „í™”ë²ˆí˜¸</td>
+									<td><input type="text" name="tel"></td>
+								</tr>
+								<tr>
+									<td>ìƒë…„ì›”ì¼</td>
+									<td><input type="text" name="birth"><input type="hidden" name="pethospital" value="null"></td>
+									
+								</tr>
+								
+								<tr>
+									<td colspan="2"><input type="submit" value="íšŒì›ê°€ì…"
+										class="alt"></td>
 								</tr>
 							</tbody>
-							<tfoot>
-								<tr>
-									<td><a href="memberInsert.jsp">È¸¿ø°¡ÀÔ | </a><a
-										href="memberSearchId.jsp">¾ÆÀÌµğ Ã£±â | </a><a
-										href="memberSearchPw.jsp">ºñ¹Ğ¹øÈ£ Ã£±â</a></td>
-								</tr>
+							<tfoot>	
 							</tfoot>
 						</table>
 					</form>

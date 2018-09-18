@@ -5,9 +5,11 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.itbank.mvc3.MemberDTO" alias="memDTO"></typeAlias>
+		<typeAlias type="com.itbank.mvc3.ProductDTO" alias="productDTO"></typeAlias>
 	</typeAliases>
 
 	<mappers>
 		<mapper resource="mappings/MemberMapper.xml" />
+		<mapper resource="mappings/ProductMapper.xml" />
 	</mappers>
 </configuration>

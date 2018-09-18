@@ -1,5 +1,6 @@
 package com.itbank.mvc3;
 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -19,15 +20,33 @@ public class MemberLoginController {
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		
+		
+		try {										
 		MemberDTO memberDTO2 = dao.selectId(id);
 		if(memberDTO2.getId().equals(id) && memberDTO2.getPw().equals(pw)) {
+			String nickname= memberDTO2.getNickname();
+			String name = memberDTO2.getName();
+			
 			session.setAttribute("id", id);
+			session.setAttribute("name", name);
+			session.setAttribute("nickname",nickname);
 			return "main";
 		}
 		else {
 			return "memberLoginFail";
 		}
+		}
+		catch (Exception e) {
+			return "memberLoginFail";
+		}
+		
+		
 	}
+	@RequestMapping("callback.do")
+	public String callback() {
+		return "callback";
+	}
+	
 }
 
 

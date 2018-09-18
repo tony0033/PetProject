@@ -17,14 +17,22 @@ public class MemberSearchIdController {
 	@RequestMapping("memberSearchId")
 	public String login(HttpServletRequest request, Model model, HttpSession session) {
 		String name = request.getParameter("name");
-		String tel = request.getParameter("name");
+		String tel = request.getParameter("tel");
 		
-		MemberDTO memberDTO2 = dao.selectId(name);
+		try {
+		MemberDTO memberDTO2 = dao.selectId(tel);
 		if(memberDTO2.getId().equals(name) && memberDTO2.getPw().equals(tel)) {
-			return "main";
+			String id = memberDTO2.getId();
+			model.addAttribute("name", name);
+			model.addAttribute("id", id);
+			return "membersearchid";
 		}
 		else {
-			return "memberLoginFail";
+			return "memberSearchFail";
+		}
+		}
+		catch (Exception e) {
+			return "memberSearchFail";
 		}
 	}
 }
