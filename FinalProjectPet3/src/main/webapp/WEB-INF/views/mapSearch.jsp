@@ -29,8 +29,8 @@
 		<div class="inner">
 			<a href="main.jsp" class="logo">introspect</a>
 			<nav id="nav">
-				<a href="main.jsp">Home</a> <a href="generic.jsp">Generic</a> <a
-					href="elements.jsp">Elements</a>
+				<a href="memberLogin.jsp">로그인</a> <a href="petHospital.jsp">동물병원
+					찾기</a><a href="generic.jsp">Generic</a> <a href="elements.jsp">Elements</a>
 			</nav>
 		</div>
 	</header>

@@ -2585,13 +2585,14 @@
 
 		table td {
 			padding: 0.75em 0.75em;
+			text-align: left;
 		}
 
 		table th {
 			font-size: 0.9em;
 			font-weight: 700;
 			padding: 0 0.75em 0.75em 0.75em;
-			text-align: left;
+			text-align: center;
 		}
 
 		table thead {
@@ -3868,6 +3869,13 @@
 				border-color: #ffffff;
 				box-shadow: 0 0 0 1px #ffffff;
 			}
+		
+		#footer select option,
+		#footer select option:checked,
+		#footer select option:hover {
+			background-color: #758e26;
+			color: #ffffff;
+		}
 
 		#footer .select-wrapper:before {
 			color: #fff;
@@ -3956,8 +3964,4 @@
 				padding: 2em 0 0.1em 0;
 			}
 
-		}
-		
-		div #iw_inner {
-			color: #fff;
 		}
