@@ -11,3 +11,9 @@ birth varchar(20),
 pethospital varchar(150)
 );
 
+create table Product (
+name varchar(1000),
+price varchar(1000),
+img varchar(1000),
+other varchar(1000)
+);

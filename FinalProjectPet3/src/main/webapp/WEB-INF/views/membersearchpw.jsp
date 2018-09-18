@@ -42,7 +42,7 @@
 						<table class="alt">
 							<tbody>
 								<tr>
-									<td>${id }님의 비밀번호는 ${pw }입니다.<br>
+									<td>${id }님의 <br>비밀번호는 '${pw }'입니다.<br>
 									<a href="memberLogin.jsp">되돌아가기</a>
 									</td>
 								</tr>
