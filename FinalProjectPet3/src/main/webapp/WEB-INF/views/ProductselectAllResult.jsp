@@ -21,6 +21,12 @@
 <script src="resources/js/main.js"></script>
 </head>
 <body>
+<style>
+table {
+width: 600px;
+heigth: 400px;
+}
+</style>
 
 	<!-- Header -->
 	<header id="header">
@@ -40,24 +46,24 @@
 			<section>
 				<h3>상품</h3>
 				<div class="table-wrapper">
- <table border="1" bordercolor="red"> 
+ <table border="1" bordercolor="red" width="200" height="200"> 
 
 <c:forEach items="${list}" var="list">
 		<tr>	
-				<td bgcolor="pink">사진</td>
-				<td bgcolor="yellow">${list.img}</td>
+				<td style="color:gray;" id="word" bgcolor="black">사진</td>
+				<td bgcolor="gray">${list.img}</td>
 			</tr>
 			<tr>
-				<td bgcolor="pink">이름</td>
-				<td bgcolor="yellow">${list.name}</td>
+				<td style="color:gray;" id="word" bgcolor="black">이름</td>
+				<td bgcolor="gray">${list.name}</td>
 			</tr>
 			<tr>
-				<td bgcolor="pink">가격</td>
-				<td bgcolor="yellow">${list.price}</td>
+				<td style="color:gray;" id="word" bgcolor="black">가격</td>
+				<td bgcolor="gray">${list.price}</td>
 			</tr>
 			<tr>
-				<td bgcolor="pink">정보</td>
-				<td bgcolor="yellow">${list.other}</td>
+				<td style="color:gray;" id="word" bgcolor="black">정보</td>
+				<td bgcolor="gray">${list.other}</td>
 			</tr> 
 </c:forEach>
 
