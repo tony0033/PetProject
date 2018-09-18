@@ -1,19 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 </head>
-<body>°Ë»öÈ° ¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ¼¼¿ä..>>>>
+<body>ê²€ìƒ‰í™œ ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì„¸ìš”..>>>>
 <form action="select.do">
-¾ÆÀÌµğ<input type="text" name="id"><br>
+ì•„ì´ë””<input type="text" name="id"><br>
 <input type="submit">
 </form>
 
 <form action="select.do">
-<input type="submit" value="ÀüÃ¼°Ë»ö">
+<input type="submit" value="ì „ì²´ê²€ìƒ‰">
 </form>
 
 

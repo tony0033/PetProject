@@ -25,6 +25,10 @@ public class MemberDAO {
 		myBatis.update("memSQL.update", dto);
 	}
 
+	public MemberDTO selectId(String id) {
+		return myBatis.selectOne("memSQL.select", id);
+	}
+	
 	public MemberDTO select(MemberDTO dto) {
 		return myBatis.selectOne("memSQL.select", dto);
 	}
