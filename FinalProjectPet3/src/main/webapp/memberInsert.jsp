@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <!--
 	Introspect by TEMPLATED
@@ -75,16 +75,17 @@
 								</tr>
 								<tr>
 									<td>생년월일</td>
-									<td><input type="text" name="birth"><input type="hidden" name="pethospital" value="null"></td>
-									
+									<td><input type="text" name="birth"><input
+										type="hidden" name="pethospital" value="null"></td>
+
 								</tr>
-								
+
 								<tr>
 									<td colspan="2"><input type="submit" value="회원가입"
 										class="alt"></td>
 								</tr>
 							</tbody>
-							<tfoot>	
+							<tfoot>
 							</tfoot>
 						</table>
 					</form>

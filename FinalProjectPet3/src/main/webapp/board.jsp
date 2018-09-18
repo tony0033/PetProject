@@ -112,7 +112,7 @@
 						<input type="email" name="bDate" value="<%=today%>"
 							readonly="readonly" />
 					</div>
-					<div class="12u$">
+					<div class="12u$"> 
 						<div class="select-wrapper">
 							<select name="bCategory" id="demo-category">
 								<option value="">- 분류 -</option>
