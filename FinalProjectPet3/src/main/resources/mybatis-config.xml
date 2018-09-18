@@ -7,7 +7,7 @@
 		<typeAlias type="com.itbank.mvc3.MemberDTO" alias="memDTO"></typeAlias>
 		<typeAlias type="com.itbank.mvc3.ProductDTO" alias="productDTO"></typeAlias>
 		<typeAlias type="com.itbank.mvc3.DiaryDTO" alias="diaryDTO"></typeAlias>
-		<typeAlias type="com.itbank.mvc3.BbsDTO" alias="bbsDTO"></typeAlias>
+		<typeAlias type="com.itbank.mvc3.BBSDTO" alias="bbsDTO"></typeAlias>
 	</typeAliases>
 
 	<mappers>
