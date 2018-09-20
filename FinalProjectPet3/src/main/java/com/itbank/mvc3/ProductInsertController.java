@@ -54,6 +54,7 @@ public class ProductInsertController {
 				productDTO.setPrice(price2);
 				productDTO.setImg(img2);
 				productDTO.setOther(other);
+				productDTO.setLink(URL);
 				productDAO.insert(productDTO);
 		} catch (Exception e) {
 				

@@ -14,20 +14,6 @@ public class ProductSelectController {
 		@Autowired
 		ProductDAO ProductDAO;
 	
-	/*@RequestMapping("select.do")
-	public String select(@RequestParam("id") String id, 
-						ProductDTO ProductDTO, 
-						Model model) throws Exception {
-		ProductDTO ProductDTO2 = ProductDAO.select(ProductDTO);
-		//ProductDTO ProductDTO2 = ProductDAO.select(ProductDTO.getId());
-		System.out.println("id : "+ProductDTO2.getId());
-		System.out.println("pw : "+ProductDTO2.getPw());
-		System.out.println("name : "+ProductDTO2.getName());
-		System.out.println("tel : "+ProductDTO2.getTel());
-		model.addAttribute("ProductDTO2", ProductDTO2);
-		
-		return "selectResult";
-	}*/
 	
 
 	@RequestMapping("selectAll2.do")

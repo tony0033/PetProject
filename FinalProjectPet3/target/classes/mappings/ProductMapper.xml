@@ -5,7 +5,7 @@
 <mapper namespace="proSQL">
 
 	<select id="select" parameterType="productDTO" resultType="productDTO">
-		SELECT * from product where name = #{name}
+		SELECT * from product where num = #{num}
 	</select>
 
 	<resultMap type="productDTO" id="rsMap">
@@ -13,6 +13,8 @@
 		<result property="price" column="price" />
 		<result property="img" column="img" />
 		<result property="other" column="other" />
+		<result property="link" column="link" />
+		<result property="num" column="num" />
 	</resultMap>
 
 	<select id="selectAll" resultMap="rsMap">
@@ -20,7 +22,7 @@
 	</select>
 
 	<insert id="insert" parameterType="productDTO">
-		INSERT INTO product VALUES(#{name},#{price},#{img},#{other})	
+		INSERT INTO product VALUES(#{name},#{price},#{img},#{other},#{link},bbb.nextval)	
 	</insert>
 
 	<update id="update" parameterType="productDTO">
