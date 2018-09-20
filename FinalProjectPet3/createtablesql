@@ -18,4 +18,21 @@ img varchar(1000),
 other varchar(1000),
 link varchar(1000),
 num int
+other varchar(1000)
+);
+
+create table diary (
+no int primary key, 
+title varchar(50),
+calendar varchar(30),
+content varchar(1000),
+id varchar(30)
+);
+
+create table bbs (
+bId varchar(30),
+bTitle varchar(50),
+bDate varchar(30),
+bCategory varchar(30),
+bContent varchar(1000)
 );
