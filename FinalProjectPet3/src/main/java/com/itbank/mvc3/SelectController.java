@@ -44,6 +44,7 @@ public class SelectController {
 		return "selectAllResult";
 	}
 	
+	
 	@RequestMapping("diaryselect.do")
 	
 	public @ResponseBody ArrayList<DiaryDTO> selectdiary(@RequestParam("calendar") String calendar, DiaryDTO diaryDTO, HttpSession session){
@@ -57,6 +58,17 @@ public class SelectController {
 		return list;
 	}
 	
+	
+	@RequestMapping("diaryselectId.do")
+	public @ResponseBody ArrayList<DiaryDTO> selectdiaryid(DiaryDTO diaryDTO, HttpSession session){
+		String id = (String)session.getAttribute("id");
+		diaryDTO.setId(id);
+		
+		ArrayList<DiaryDTO> list = (ArrayList<DiaryDTO>) diaryDAO.selectId(diaryDTO);
+		
+		
+		return list;
+	}
 	
 	
 	

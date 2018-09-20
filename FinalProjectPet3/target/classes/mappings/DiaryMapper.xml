@@ -4,8 +4,8 @@
 
 <mapper namespace="diarySQL">
 
-	<select id="select" parameterType="diaryDTO" resultType="diaryDTO">
-		SELECT * from diary where no = #{no} 
+	<select id="selectId" parameterType="diaryDTO" resultType="diaryDTO">
+		SELECT * from diary where id = #{id} 
 	</select>
 
 	<resultMap type="diaryDTO" id="rsMap">

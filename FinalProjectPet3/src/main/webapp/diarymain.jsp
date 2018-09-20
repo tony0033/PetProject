@@ -21,35 +21,81 @@
 <script src="resources/js/util.js"></script>
 <script src="resources/js/main.js"></script>
 <script type="text/javascript"
-	src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	src="resources/js/jquery-1.11.1.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script type="text/javascript">
 	$(function() {
+
+
+ 						var datelist=[];
+					$.ajax({
+						url : "diaryselectId.do",
+						type : "get",
+						data : {
+						},
+						success : function(data) {
+							$.each(data, function(idx, val) {
+ 								var todaydate = new Date(val.calendar); 
+ 								if($.inArray(todaydate,datelist) ==-1){
+								datelist.push(todaydate.getTime());
+								console.log(todaydate);
+ 								}
+								console.log(datelist);
+ 								
+							});
+						}
+					});
 		$("#datepicker").datepicker(
 				{
 					dateFormat : 'yy-mm-dd',
-					showOtherMonths : true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
-					,
-					showMonthAfterYear : true //년도 먼저 나오고, 뒤에 월 표시
-					,
-					changeMonth : true //콤보박스에서 월 선택 가능 
-					,
+					showOtherMonths : true, //빈 공간에 현재월의 앞뒤월의 날짜를 표시
+					
+					showMonthAfterYear : true, //년도 먼저 나오고, 뒤에 월 표시
+					
+					changeMonth : true, //콤보박스에서 월 선택 가능 
+					
 					changeYear : true,
 					dayNamesMin : [ '일', '월', '화', '수', '목', '금', '토' ],
 					monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월',
 							'8월', '9월', '10월', '11월', '12월' ],
 					monthNamesShort : [ '1', '2', '3', '4', '5', '6', '7', '8',
-							'9', '10', '11', '12' ]
+							'9', '10', '11', '12' ],
+				
+				beforeShowDay: function(dateStr){
+ 						var dd = dateStr.getDate();
+						var mm = dateStr.getMonth()+1;
+						var yyyy = dateStr.getFullYear();
+						
+						if(dd < 10){
+							dd = '0'+dd
+						}
+
+						if(mm < 10){
+							mm = '0'+mm
+						}
+
+						var date = new Date(yyyy+'-'+mm+'-'+dd);        //jquery 달력의 날짜를 yyyy/mm/dd 형태로 만듬.							
+						var date3 = date.getTime();
+						var Highlight = datelist[date];
+						
+					if ($.inArray(date3, datelist) != -1) {    //jquery달력의 날짜가 오늘날짜와 같다면
+						return [true, "Highlighted", Highlight];    //스타일 적용
+
+					}else{
+						console.log(date);
+						return [true, '', ''];
+
+					}
+				
+				}
 				});
 
 		$('#insertbutton').click(function() {
 			$("form").submit();
 		});
 
-		$('#selectbutton').click(
-				function() {
+		$('#selectbutton').click(function() {
 					$("#diary").text("");
 					$.ajax({
 						url : "diaryselect.do",

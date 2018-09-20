@@ -32,4 +32,7 @@ public class DiaryDAO {
 	public List<DiaryDTO> selectDate(DiaryDTO dto) {
 		return myBatis.selectList("diarySQL.selectDate",dto);
 	}
+	public List<DiaryDTO> selectId(DiaryDTO dto) {
+		return myBatis.selectList("diarySQL.selectId",dto);
+	}
 }
