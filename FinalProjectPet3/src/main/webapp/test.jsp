@@ -22,14 +22,15 @@
 <script src="resources/js/main.js"></script>
 </head>
 <body>
+	<form name="Form" method="post" action="">
 
-	<%
-		Date now = new Date();
-		SimpleDateFormat sd = new SimpleDateFormat("yyyy.MM.dd");
-		String today = sd.format(now);
-	%>
+		dks<input type="file" name="file" style="display: none;"> <input
+			type="text" size="40" name="text1" readonly> <a class='MIME'
+			class='MIME' href="javascript:file_browse()"> <IMG
+			SRC="D:\04_Messenger\감자도리\띠떼프_배경.gif" BORDER=0>
 
-	<%=today%><br>
+		</a>
 
+	</form>
 </body>
 </html>

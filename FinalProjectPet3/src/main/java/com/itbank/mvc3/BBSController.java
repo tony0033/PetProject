@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BBSController {
 
 	@Autowired
-	BBSDAO dao;
+	BBSDAO bbsDAO;
 
 	@RequestMapping("bbsQuestion")
 	public String bbsInsert(BBSDTO bbsDTO) {
-		dao.insert(bbsDTO);
+		bbsDAO.insert(bbsDTO);
 		
-		return "redirect:board.jsp";
+		return "redirect:main.jsp";
 	}
 }

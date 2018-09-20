@@ -1,3 +1,4 @@
+<%@page import="com.itbank.mvc3.BBSDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="java.util.*, java.text.*"%>
@@ -28,9 +29,9 @@
 		<div class="inner">
 			<a href="main.jsp" class="logo">introspect</a>
 			<nav id="nav">
-				<a href="memberLogin.jsp" id="loginout">로그인</a> <a href="petHospital.jsp">동물병원
-					찾기</a><a href="board.jsp">게시판</a><a href="generic.jsp">Generic</a> <a
-					href="elements.jsp">Elements</a>
+				<a href="memberLogin.jsp" id="loginout">로그인</a> <a
+					href="petHospital.jsp">동물병원 찾기</a><a href="board.jsp">게시판</a><a
+					href="generic.jsp">Generic</a> <a href="elements.jsp">Elements</a>
 			</nav>
 		</div>
 	</header>
@@ -91,28 +92,32 @@
 		</div>
 	</section>
 
-	<%
-		Date now = new Date();
-		SimpleDateFormat sd = new SimpleDateFormat("yyyy.MM.dd");
-		String today = sd.format(now);
-	%>
 
 	<!-- Footer -->
 	<section id="footer">
 		<div class="inner">
-			<header>
-				<h2>글쓰기</h2>
-			</header>
+			<%
+				if (session.getAttribute("id") != null) { //로그인 되어 있으면 글쓰기 사용 o
+
+					Date now = new Date(); //오늘 날짜 받아오기
+					SimpleDateFormat sd = new SimpleDateFormat("yyyy.MM.dd");
+					String today = sd.format(now);
+			%>
 			<form method="post" action="bbsQuestion">
+				<header>
+					<h2>글쓰기</h2>
+				</header>
 				<div class="row uniform 50%">
 					<div class="6u 12u$(xsmall)">
-						<input type="text" name="bTitle" placeholder="제목" />
+						<input type="text" name="bId"
+							value="<%=session.getAttribute("id")%>" style="display: none;">
+						<input type="text" name="bTitle" placeholder="제목">
 					</div>
 					<div class="6u$ 12u$(xsmall)">
 						<input type="email" name="bDate" value="<%=today%>"
-							readonly="readonly" />
+							readonly="readonly">
 					</div>
-					<div class="12u$"> 
+					<div class="12u$">
 						<div class="select-wrapper">
 							<select name="bCategory" id="demo-category">
 								<option value="">- 분류 -</option>
@@ -128,16 +133,19 @@
 					</div>
 					<div class="12u$">
 						<ul class="actions">
-							<li><input type="submit" value="Send Message" class="alt" /></li>
-							<li><input type="reset" value="Reset" /></li>
+							<li><input type="submit" value="Send Message" class="alt"></li>
+							<li><input type="reset" value="Reset"></li>
 						</ul>
 					</div>
 				</div>
 			</form>
-			<div class="copyright">
-				&copy; Untitled Design: <a href="https://templated.co/">TEMPLATED</a>.
-				Images <a href="https://unsplash.com/">Unsplash</a>
-			</div>
+			<%
+				} else { //비 로그인시 글 읽기만 가능
+			%>
+			<div class="copyright">로그인을 하시면 글쓰기(질문)를 사용할 수 있습니다.</div>
+			<%
+				}
+			%>
 		</div>
 	</section>
 </body>
