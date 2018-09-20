@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+input {
+	width: 35% !important;
+	display: inline !important;
+	border: 1px solid gray !important;
+	height: 30px !important;
+}
+
+select {
+	width: 50px !important;
+	display: inline !important;
+	height: 30px !important;
+	text-align: center !important;
+}
+
+#onediary {
+	border: 1px solid black;
+}
+
+img {
+	width: 70% !important;
+	height: 40%px !important;
+}
+
+#right {
+	text-align: right;
+}
+/*datepicer 버튼 롤오버 시 손가락 모양 표시*/
+.ui-datepicker-trigger {
+	cursor: pointer;
+}
+/*datepicer input 롤오버 시 손가락 모양 표시*/
+.hasDatepicker {
+	cursor: pointer;
+}

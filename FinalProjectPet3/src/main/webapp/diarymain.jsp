@@ -1,3 +1,4 @@
+<%@page import="javafx.scene.control.Alert"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>>
 <!DOCTYPE HTML>
@@ -13,16 +14,14 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="resources/css/main.css" />
-<link rel="stylesheet" href="resources/css/diary.css" />
 <link rel="stylesheet" href="resources/css/font-awesome.min.css">
+<link rel="stylesheet" href="resources/css/diary.css" />
 <script src="resources/js/jquery.min.js"></script>
 <script src="resources/js/skel.min.js"></script>
 <script src="resources/js/util.js"></script>
 <script src="resources/js/main.js"></script>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-<script type="text/javascript"
-	src="resources/editor/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -44,35 +43,36 @@
 					monthNamesShort : [ '1', '2', '3', '4', '5', '6', '7', '8',
 							'9', '10', '11', '12' ]
 				});
-		$('#datepicker').datepicker('setDate', 'today');
 
-		var editor_object = [];
-		nhn.husky.EZCreator.createInIFrame({ // 스마트에디터 형식 적용
-			oAppRef : editor_object,
-			elPlaceHolder : "smarteditor",
-			sSkinURI : "resources/editor/SmartEditor2Skin.html",
-			htParams : {
-				bUseToolbar : true,
-				bUseVerticalResizer : true,
-				bUseModeChanger : true,
-
-			}
+		$('#insertbutton').click(function() {
+			$("form").submit();
 		});
 
-		//전송버튼 클릭이벤트
-		$("#savebutton").click(
+		$('#selectbutton').click(
 				function() {
-					//id가 smarteditor인 textarea에 에디터에서 대입
-					editor_object.getById["smarteditor"].exec(
-							"UPDATE_CONTENTS_FIELD", []);
+					$("#diary").text("");
+					$.ajax({
+						url : "diaryselect.do",
+						type : "get",
+						data : {
+							"calendar" : $("#datepicker").val()
+						},
+						success : function(data) {
+							$.each(data, function(idx, val) {
+								$("#diary").append("<div id= onediary>");
+								$("#diary").append(
+										"<div id = title><h3> " + val.title
+												+ "</h3></div>");
+								$("#diary").append(
+										"<div id = content>" + val.content
+												+ "</div></div>");
+							});
+						}
+					});
 
-					// 이부분에 에디터 validation 검증
+				});
 
-					//폼 submit
-					$("#frm").submit();
-				})
-
-	})
+	});
 </script>
 </head>
 <body>
@@ -81,6 +81,7 @@ if(id!=null){
 
 
 %>
+
 	<!-- Header -->
 	<header id="header">
 		<div class="inner">
@@ -97,18 +98,19 @@ if(id!=null){
 	<section id="main">
 		<div class="inner">
 			<section>
-				<h3>일기 작성</h3>
-				<form action="diaryinsert.do" method="post" id="frm">
-					제목: <input type="text" name="title">
-					 날짜: <input type="text" id="datepicker" name="calendar" autocomplete="off" readonly="readonly">
-					<input type="hidden" value=<%=id %> name="id">
+				<h3>일기</h3>
+				<form action="diary.jsp">
+					날짜: <input type="text" id="datepicker" name="calendar"
+						autocomplete="off" readonly="readonly">
+
+					<div id = right>
+						<button id=insertbutton>작성하기</button>
+						<button id=selectbutton type="button">그날의 일기</button>
+					</div>
+					<br> <br>
 					<br>
-					<br>
-					<br>
-					<textarea name="content" id="smarteditor" rows="10" cols="100"
-						style="width: 70%; height: 350px;"></textarea>
-					<input type="button" id="savebutton" value="서버전송" />
 				</form>
+				<div id=diary></div>
 
 			</section>
 		</div>
@@ -116,11 +118,11 @@ if(id!=null){
 
 	<!-- Footer -->
 	<section id="footer">
+
 		<div class="inner"></div>
 	</section>
-	<%
-	}
-	else{
+	<%}
+else{
 	out.println("<script>");
 	out.println("alert('로그인 후 가능합니다.')");
 	out.println("location.href='memberLogin.jsp'");
@@ -129,6 +131,5 @@ if(id!=null){
 }
 
 %>
-	
 </body>
 </html>

@@ -5,22 +5,23 @@
 <mapper namespace="diarySQL">
 
 	<select id="select" parameterType="diaryDTO" resultType="diaryDTO">
-		SELECT * from diary where no = #{no}
+		SELECT * from diary where no = #{no} 
 	</select>
 
 	<resultMap type="diaryDTO" id="rsMap">
 		<result property="no" column="no" />
 		<result property="title" column="title" />
-		<result property="date" column="date" />
+		<result property="calendar" column="calendar" />
 		<result property="content" column="content" />
+		<result property="id" column="id" />
 	</resultMap>
 
-	<select id="selectAll" resultMap="rsMap">
-		SELECT * FROM diary
+	<select id="selectDate" parameterType="diaryDTO" resultMap="rsMap">
+		SELECT * FROM diary where calendar = #{calendar} AND id= #{id}
 	</select>
 
 	<insert id="insert" parameterType="diaryDTO">
-		INSERT INTO diary VALUES(no.NEXTVAL,#{title},#{date},#{content})	
+		INSERT INTO diary VALUES(no.NEXTVAL,#{title},#{calendar},#{content},#{id})	
 	</insert>
 
 	<update id="update" parameterType="diaryDTO">

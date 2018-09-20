@@ -22,7 +22,7 @@ public class InsertController {
 	@RequestMapping("diaryinsert.do")
 	public String insert(DiaryDTO diaryDTO) {
 		diarydao.insert(diaryDTO);
-		return "insertResult";
+		return "redirect:diarymain.jsp";
 	}
 	
 }

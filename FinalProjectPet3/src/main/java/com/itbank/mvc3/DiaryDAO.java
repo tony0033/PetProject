@@ -29,7 +29,7 @@ public class DiaryDAO {
 		return myBatis.selectOne("diarySQL.select", dto);
 	}
 
-	public List<DiaryDTO> selectAll() {
-		return myBatis.selectList("diarySQL.selectAll");
+	public List<DiaryDTO> selectDate(DiaryDTO dto) {
+		return myBatis.selectList("diarySQL.selectDate",dto);
 	}
 }

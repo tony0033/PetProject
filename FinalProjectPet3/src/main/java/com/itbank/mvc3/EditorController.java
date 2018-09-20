@@ -38,8 +38,8 @@ public class EditorController {
 			// 파일명을 받는다 - 일반 원본파일명
 			String oldName = request.getHeader("file-name");
 			// 파일 기본경로 _ 상세경로
-			/*String filePath = "D:\\PJY\\FinalProjectPet4\\src\\main/webapp/resources/photoUpload/";*/
-			String filePath = "/mvc4/resources/photoUpload/";
+			String filePath = "C:\\Users\\user\\git\\PetProject2\\FinalProjectPet3\\src\\main\\webapp\\resources\\photoUpload/";
+			/*String filePath = "/mvc3/resources/photoUpload/";*/
 			String saveName = sb.append(new SimpleDateFormat("yyyyMMddHHmmss").format(System.currentTimeMillis()))
 								.append(UUID.randomUUID().toString())
 								.append(oldName.substring(oldName.lastIndexOf("."))).toString();
@@ -56,7 +56,7 @@ public class EditorController {
 			sb = new StringBuffer();
 			sb.append("&bNewLine=true")
 			  .append("&sFileName=").append(oldName)
-			  .append("&sFileURL=").append("http://localhost:8888/mvc4/resources/photoUpload/").append(saveName);
+			  .append("&sFileURL=").append("http://localhost:8888/mvc3/resources/photoUpload/").append(saveName);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
