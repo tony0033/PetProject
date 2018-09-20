@@ -39,9 +39,7 @@
  								var todaydate = new Date(val.calendar); 
  								if($.inArray(todaydate,datelist) ==-1){
 								datelist.push(todaydate.getTime());
-								console.log(todaydate);
  								}
-								console.log(datelist);
  								
 							});
 						}
@@ -83,7 +81,6 @@
 						return [true, "Highlighted", Highlight];    //스타일 적용
 
 					}else{
-						console.log(date);
 						return [true, '', ''];
 
 					}
