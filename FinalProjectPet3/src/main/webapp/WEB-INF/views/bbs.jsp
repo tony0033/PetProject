@@ -1,8 +1,7 @@
-<%@page import="com.itbank.mvc3.BBSDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="java.util.*, java.text.*"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
 <!--
 	Introspect by TEMPLATED
@@ -30,12 +29,13 @@
 			<a href="main.jsp" class="logo">introspect</a>
 			<nav id="nav">
 				<a href="memberLogin.jsp" id="loginout">로그인</a> <a
-					href="petHospital.jsp">동물병원 찾기</a><a href="board.jsp">게시판</a><a
+					href="petHospital.jsp">동물병원 찾기</a><a href="bbs.jsp">게시판</a><a
 					href="generic.jsp">Generic</a> <a href="elements.jsp">Elements</a>
 			</nav>
 		</div>
 	</header>
 	<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+
 
 	<!-- Main -->
 	<section id="main">
@@ -47,45 +47,31 @@
 					<table>
 						<thead>
 							<tr>
-								<th>제목</th>
+								<th colspan="2">제목</th>
 								<th>글쓴이</th>
 								<th>작성일</th>
 								<th>조회</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>Item 1</td>
-								<td>Ante turpis integer aliquet porttitor.</td>
-								<td>29.99</td>
-							</tr>
-							<tr>
-								<td>Item 2</td>
-								<td>Vis ac commodo adipiscing arcu aliquet.</td>
-								<td>19.99</td>
-							</tr>
-							<tr>
-								<td>Item 3</td>
-								<td>Morbi faucibus arcu accumsan lorem.</td>
-								<td>29.99</td>
-							</tr>
-							<tr>
-								<td>Item 4</td>
-								<td>Vitae integer tempus condimentum.</td>
-								<td>19.99</td>
-							</tr>
-							<tr>
-								<td>Item 5</td>
-								<td>Ante turpis integer aliquet porttitor.</td>
-								<td>29.99</td>
-							</tr>
+							<c:if test="${ !empty bList }">
+								<c:forEach items="${bList}" var="bList">
+									<tr>
+										<td>${bList.bNum}</td>
+										<td class="title"><a
+											href="bbsOpen?bTitle=${bList.bTitle}">${bList.bTitle}</a></td>
+										<td>${bList.bId}</td>
+										<td>${bList.bDate}</td>
+										<td>${bList.bDate}</td>
+									</tr>
+								</c:forEach>
+							</c:if>
+							<c:if test="${ empty bList }">
+								<tr>
+									<td colspan="5">등록된 게시물이 없습니다.</td>
+								</tr>
+							</c:if>
 						</tbody>
-						<tfoot>
-							<tr>
-								<td colspan="2"></td>
-								<td>100.00</td>
-							</tr>
-						</tfoot>
 					</table>
 				</div>
 			</section>
@@ -121,10 +107,10 @@
 						<div class="select-wrapper">
 							<select name="bCategory" id="demo-category">
 								<option value="">- 분류 -</option>
-								<option value="eat">먹이</option>
-								<option value="sick">질병</option>
-								<option value="common">상식</option>
-								<option value="etc">기타</option>
+								<option value="먹이">먹이</option>
+								<option value="질병">질병</option>
+								<option value="상식">상식</option>
+								<option value="기타">기타</option>
 							</select>
 						</div>
 					</div>
@@ -142,7 +128,9 @@
 			<%
 				} else { //비 로그인시 글 읽기만 가능
 			%>
-			<div class="copyright">로그인을 하시면 글쓰기(질문)를 사용할 수 있습니다.</div>
+			<div class="copyright">
+				<a href="memberLogin.jsp">로그인</a>을 하시면 글쓰기(질문)를 사용할 수 있습니다.
+			</div>
 			<%
 				}
 			%>
