@@ -39,8 +39,18 @@ bContent varchar(1000),
 bView number
 );
 
+create table interest (
+name varchar(1000),
+price varchar(1000),
+img varchar(1000),
+other varchar(1000),
+link varchar(1000),
+id varchar(100)
+);
+
 create sequence bNum
 start with 0
 increment by 1
 nomaxvalue
 minvalue -1;
+
