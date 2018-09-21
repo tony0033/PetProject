@@ -8,9 +8,11 @@
 		<typeAlias type="com.itbank.mvc3.ProductDTO" alias="productDTO"></typeAlias>
 		<typeAlias type="com.itbank.mvc3.DiaryDTO" alias="diaryDTO"></typeAlias>
 		<typeAlias type="com.itbank.mvc3.BBSDTO" alias="bbsDTO"></typeAlias>
+		<typeAlias type="com.itbank.mvc3.BBSCommentDTO" alias="bbsCommentDTO"></typeAlias>
 	</typeAliases>
 
 	<mappers>
+		<mapper resource="mappings/BbsCommentMapper.xml" />
 		<mapper resource="mappings/BbsMapper.xml" />
 		<mapper resource="mappings/DiaryMapper.xml" />
 		<mapper resource="mappings/MemberMapper.xml" />
