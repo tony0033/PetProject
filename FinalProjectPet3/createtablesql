@@ -30,9 +30,17 @@ id varchar(30)
 );
 
 create table bbs (
+bNum number,
 bId varchar(30),
 bTitle varchar(50),
 bDate varchar(30),
 bCategory varchar(30),
-bContent varchar(1000)
+bContent varchar(1000),
+bView number
 );
+
+create sequence bNum
+start with 0
+increment by 1
+nomaxvalue
+minvalue -1;
