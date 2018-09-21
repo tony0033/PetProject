@@ -18,7 +18,7 @@
 	</resultMap>
 
 	<select id="selectAll" resultMap="rsMap">
-		SELECT * FROM bbs
+		SELECT * FROM bbs order by bNum desc
 	</select>
 
 	<insert id="insert" parameterType="bbsDTO">
