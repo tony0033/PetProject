@@ -8,6 +8,7 @@
 		<typeAlias type="com.itbank.mvc3.ProductDTO" alias="productDTO"></typeAlias>
 		<typeAlias type="com.itbank.mvc3.DiaryDTO" alias="diaryDTO"></typeAlias>
 		<typeAlias type="com.itbank.mvc3.BBSDTO" alias="bbsDTO"></typeAlias>
+		<typeAlias type="com.itbank.mvc3.InterestDTO" alias="interestDTO"></typeAlias>
 		<typeAlias type="com.itbank.mvc3.BBSCommentDTO" alias="bbsCommentDTO"></typeAlias>
 	</typeAliases>
 
@@ -17,5 +18,6 @@
 		<mapper resource="mappings/DiaryMapper.xml" />
 		<mapper resource="mappings/MemberMapper.xml" />
 		<mapper resource="mappings/ProductMapper.xml" />
+		<mapper resource="mappings/InterestMapper.xml" />
 	</mappers>
 </configuration>

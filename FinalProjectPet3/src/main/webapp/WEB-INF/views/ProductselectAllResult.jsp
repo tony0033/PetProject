@@ -19,8 +19,6 @@
 <script src="resources/js/skel.min.js"></script>
 <script src="resources/js/util.js"></script>
 <script src="resources/js/main.js"></script>
-</head>
-<body>
 <style>
 img {
 width: 150px !important ;
@@ -35,7 +33,16 @@ float: left;
 padding-right: 50px;
 float: left;
 }
+button{
+width: 175px;
+height: 50px;
+}
 </style>
+</head>
+<body>
+<%String id = (String)session.getAttribute("id"); 
+String nickname = (String)session.getAttribute("nickname");
+%>
 
 	<!-- Header -->
 	<header id="header">
@@ -48,11 +55,22 @@ float: left;
 		</div>
 	</header>
 	<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+	
 
 	<!-- Main -->
 	<section id="main">
 		<div class="inner">
 			<section>
+				<center>
+					<%
+	if(id != null){
+		%>
+		<h2><%= nickname %>님 환영합니다.</h2>
+		<a href="InterestSelect.jsp">rr</a>
+		<%
+	}
+	%>
+				</center>
 				<h3>상품</h3>
 				<div class="table-wrapper">
 <c:forEach items="${list}" var="list">
@@ -74,7 +92,15 @@ float: left;
 				<td style="color:gray;" id="word" bgcolor="black">정보</td>
 				<td bgcolor="gray">${list.other}</td>
 			</tr> 
-
+				<%
+	if(id != null){
+		%>
+			<tr>	
+				<td><button onclick="location.href='interestInput?num=${list.num}&id=<%= id %>'">장바구니에 담기</button></td>
+			</tr>				
+		<%
+	}
+	%>
 		</table> 
 </div>
 </c:forEach>

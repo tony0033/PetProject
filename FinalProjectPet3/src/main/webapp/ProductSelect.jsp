@@ -8,9 +8,7 @@
 </head>
 <body>
 
-<form action="selectAll2.do">
-<input type="submit" value="전체검색">
-</form>
+<jsp:forward page="selectAll2.do"></jsp:forward>
 
 
 </body>
