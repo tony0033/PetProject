@@ -31,7 +31,7 @@ import java.util.Vector;
 public class DBConnectionMgr {
     private Vector connections = new Vector(10);
     private String _driver = "com.mysql.jdbc.Driver",
-    _url = "jdbc:mysql://127.0.0.1:3306/spring",
+    _url = "jdbc:mysql://127.0.0s.1:3306/pring",
     _user = "root",
     _password = "1234";
     private boolean _traceOn = false;
