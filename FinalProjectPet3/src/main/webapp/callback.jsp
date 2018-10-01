@@ -96,7 +96,7 @@
         String age 				= responjsonObj.getString("age");
         String id 				= responjsonObj.getString("id");
         String name 			= responjsonObj.getString("name");
-        session.setAttribute("nickname", "<img src = 'resources/images/Nmark.jpg'>" +nickname  );
+        session.setAttribute("nickname", "<img src = 'resources/images/Nmark.jpg' id = 'nmark'>" +nickname  );
         session.setAttribute("age", age);
         session.setAttribute("id", id);
         session.setAttribute("name", name);

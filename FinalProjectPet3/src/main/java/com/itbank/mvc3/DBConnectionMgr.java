@@ -30,15 +30,14 @@ import java.util.Properties;
 import java.util.Vector;
 public class DBConnectionMgr {
     private Vector connections = new Vector(10);
-    private String _driver = "com.mysql.jdbc.Driver",
-    _url = "jdbc:mysql://127.0.0s.1:3306/pring",
-    _user = "root",
+    private String _driver = "oracle.jdbc.OracleDriver",
+    _url = "jdbc:oracle:thin:@localhost:1521:xe",
+    _user = "big",
     _password = "1234";
     private boolean _traceOn = false;
     private boolean initialized = false;
     private int _openConnections = 10;
     private static DBConnectionMgr instance = null;
-
     public DBConnectionMgr() {
     }
 

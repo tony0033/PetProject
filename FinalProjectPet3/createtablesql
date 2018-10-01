@@ -60,10 +60,10 @@ views varchar(100),
 type number
 );
 
-create table column(
-no number
+create table address(
+no number ,
 addr varchar(500),
-title varchar(500),
+title varchar(500)
 );
 
 create sequence bNum
