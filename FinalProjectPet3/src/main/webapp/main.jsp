@@ -1,3 +1,7 @@
+<%@page import="com.itbank.mvc3.ColumnDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.Random"%>
+<%@page import="com.itbank.mvc3.ColumnDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
@@ -12,12 +16,14 @@
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="resources/css/main.css" />
+<link rel="stylesheet" href="resources/css/main.css"/>
 <link rel="stylesheet" href="resources/css/font-awesome.min.css">
+<link rel="stylesheet" href="resources/css/js-image-slider.css">
 <script src="resources/js/jquery.min.js"></script>
 <script src="resources/js/skel.min.js"></script>
 <script src="resources/js/util.js"></script>
 <script src="resources/js/main.js"></script>
+<script src="resources/js/js-image-slider.js"></script>
 </head>
 <body>
 
@@ -72,27 +78,81 @@
 			<article>
 				<div class="content">
 					<header>
-						<h3>Pellentesque adipis</h3>
+						<h3>[Bodeum]강형욱 칼럼</h3>
 					</header>
-					<div class="image fit">
-						<img src="resources/images/pic01.jpg" alt="" />
+					<div class="slider">
+						<%
+							Random random = new Random();
+							String num = String.valueOf(random.nextInt(5));
+						%>
+						<img src="resources/images/column<%=num %>.jpg" alt="" />
 					</div>
-					<p>Cumsan mollis eros. Pellentesque a diam sit amet mi magna
-						ullamcorper vehicula. Integer adipiscin sem. Nullam quis massa sit
-						amet lorem ipsum feugiat tempus.</p>
+					<div align="center">
+						<%
+							ColumnDAO dao = new ColumnDAO();
+							int pageNum;
+							if (request.getParameter("pageNum") == null) {
+								pageNum = 1;
+							} else {
+								pageNum = Integer.parseInt(request.getParameter("pageNum"));
+							}
+
+						int start = (pageNum - 1) * 4;
+						int end = 4;
+						ArrayList list = dao.selectAll(start, end);
+						for (int i = 0; i < list.size(); i++) {
+							
+							ColumnDTO dto1 = (ColumnDTO) list.get(i);
+						%>
+						<form action = "column.do">
+							<input type="hidden" name="addr" value=<%=dto1.getAddr() %>>
+							<font color="#383d44" size="4"><%=dto1.getTitle() %></font>
+							<input type="image" src="resources/images/button2.png" name="submit" value="">
+							<!-- <input type="submit" class="button alt" value="read" width="10" height="5"> -->
+						</form>
+						<% 
+						}
+						%>
+						<%
+						int max = dao.ListCount();
+						for(int i=0;i<max;i++){
+						%>
+						<a href="main.jsp?pageNum=<%=i+1%>"><%=i+1 %></a>					
+						<%
+						}
+						%>
+						
+						</div>
 				</div>
 			</article>
 			<article class="alt">
 				<div class="content">
 					<header>
-						<h3>Morbi interdum mol</h3>
+						<h3>동영상</h3>
 					</header>
-					<div class="image fit">
-						<img src="resources/images/pic02.jpg" alt="" />
-					</div>
-					<p>Cumsan mollis eros. Pellentesque a diam sit amet mi magna
-						ullamcorper vehicula. Integer adipiscin sem. Nullam quis massa sit
-						amet lorem ipsum feugiat tempus.</p>
+						<div id="slider">
+							<a href="video1.jsp">
+								<img src="resources/images/video1.png"  alt="" /><br>
+							</a>
+							<a href="video2.jsp">
+								<img src="resources/images/video2.png"  alt="" /><br>
+							</a>
+							<a href="video3.jsp">
+								<img src="resources/images/video3.png"  alt="" /><br>
+							</a>
+						</div>
+						<br>
+						<div align="center">
+						<a href="video1.jsp">
+							<font color="#383d44" size="4">#강형욱의 견종백과#</font><br>
+						</a>
+						<a href="video2.jsp">
+							<font color="#383d44" size="4">#세상에 나쁜 개는 없다#</font><br>
+						</a>
+						<a href="video3.jsp">
+							<font color="#383d44" size="4">#소소한 Q&A#</font>
+						</a>
+						</div>
 				</div>
 			</article>
 		</div>

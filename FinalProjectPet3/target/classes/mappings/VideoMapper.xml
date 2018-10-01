@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="videoSQL">
+
+	<select id="select" parameterType="VideoDTO" resultType="VideoDTO">
+		SELECT * from diary where no = #{no} 
+	</select>
+
+	<resultMap type="VideoDTO" id="rsMap">
+		<result property="no" column="no" />
+		<result property="src" column="src" />
+		<result property="title" column="title" />
+		<result property="views" column="views" />
+	</resultMap>
+
+	<select id="selectAll" parameterType="VideoDTO" resultMap="rsMap">
+		select * from video where no not in (?) limit ?,4
+	</select>
+
+
+
+	<delete id="delete" parameterType="diaryDTO">
+		DELETE FROM diary WHERE no = #{no}
+	</delete>
+
+</mapper>

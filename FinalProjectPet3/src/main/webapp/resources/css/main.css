@@ -17,6 +17,12 @@
 		font: inherit;
 		vertical-align: baseline;
 	}
+	
+	.vList{
+		width : 25%;
+		height: 200px;
+		float: left;
+	}
 
 	article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
 		display: block;

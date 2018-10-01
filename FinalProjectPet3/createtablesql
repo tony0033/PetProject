@@ -52,6 +52,20 @@ cComment varchar(1000),
 cDate varchar(30)
 );
 
+create table video(
+no number,
+src varchar(500),
+title varchar(500),
+views varchar(100),
+type number
+);
+
+create table column(
+no number
+addr varchar(500),
+title varchar(500),
+);
+
 create sequence bNum
 start with 0
 increment by 1
