@@ -36,7 +36,9 @@ bTitle varchar(50),
 bDate varchar(30),
 bCategory varchar(30),
 bContent varchar(1000),
-bView number
+bView number,
+constraints bbs_pk primary key(bNum, bView),
+constraints bbs_pk_uk unique(bNum)
 );
 
 create table interest (
@@ -46,10 +48,13 @@ id varchar(100)
 
 create table bbsComment (
 cNum number,
-bTitle varchar(50),
+bNum number,
 cId varchar(30),
 cComment varchar(1000),
-cDate varchar(30)
+cDate varchar(30),
+constraints bbsComment_pk primary key(cNum),
+constraint "comment_fk" foreign key(bNum)
+references bbs(bNum) on delete cascade
 );
 
 create sequence bNum
