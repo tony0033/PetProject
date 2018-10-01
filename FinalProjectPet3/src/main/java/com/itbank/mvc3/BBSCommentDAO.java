@@ -25,8 +25,8 @@ public class BBSCommentDAO {
 		myBatis.update("bbsCommentSQL.update", dto);
 	}
 
-	public BBSCommentDTO select(BBSCommentDTO dto) {
-		return myBatis.selectOne("bbsCommentSQL.select", dto);
+	public List<BBSCommentDTO> select(BBSCommentDTO dto) {
+		return myBatis.selectList("bbsCommentSQL.select", dto);
 	}
 
 	public List<BBSCommentDTO> selectAll() {

@@ -1,5 +1,8 @@
 package com.itbank.mvc3;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,8 +19,15 @@ public class BBSCommentController {
 	@ResponseBody
 	public String bbsCommentInsert(BBSCommentDTO bbsCommentDTO, Model model) {
 		bbsCommentDAO.insert(bbsCommentDTO);
-		
-		return "bbsOpen";
+		return "success";
 	}
 	
+	@RequestMapping("bbsCommentList")
+	public @ResponseBody ArrayList<BBSCommentDTO> bbsSelect(BBSCommentDTO bbsCommentDTO, Model model){
+		
+		ArrayList<BBSCommentDTO> commentList = (ArrayList<BBSCommentDTO>) bbsCommentDAO.select(bbsCommentDTO);
+		model.addAttribute("commentList", commentList);
+		
+		return commentList;
+	}
 }

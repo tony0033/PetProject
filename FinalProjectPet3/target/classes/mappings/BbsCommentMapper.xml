@@ -4,14 +4,13 @@
 
 <mapper namespace="bbsCommentSQL">
 
-	<select id="select" parameterType="bbsCommentDTO" resultType="bbsCommentDTO">
-		SELECT *
-		from bbsComment where bTitle=#{bTitle}
+	<select id="select" parameterType="bbsCommentDTO" resultMap="rsMap">
+		SELECT * from bbsComment where bNum=#{bNum}
 	</select>
 
 	<resultMap type="bbsCommentDTO" id="rsMap">
 		<result property="cNum" column="cNum" />
-		<result property="bTitle" column="bTitle" />
+		<result property="bNum" column="bNum" />
 		<result property="cId" column="cId" />
 		<result property="cComment" column="cComment" />
 		<result property="cDate" column="cDate" />
@@ -23,12 +22,12 @@
 
 	<insert id="insert" parameterType="bbsDTO">
 		INSERT INTO bbsComment
-		VALUES(cNum.nextval,#{bTitle},#{cId},#{cComment},#{cDate})
+		VALUES(cNum.nextval,#{bNum},#{cId},#{cComment},#{cDate})
 	</insert>
 
 	<update id="update" parameterType="bbsDTO">
 		UPDATE bbsComment SET
-		bTitle=#{bTitle},cComment=#{cComment},cDate=#{cDate}
+		bNum=#{bNum},cComment=#{cComment},cDate=#{cDate}
 		WHERE cId = #{cId}
 	</update>
 	

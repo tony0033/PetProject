@@ -36,7 +36,7 @@ public class BBSController {
 		BBSDTO seBBS = bbsDAO.select(bbsDTO);
 		model.addAttribute("seBBS",seBBS);
 		session.setAttribute("seBBSid", seBBS.getbId());
-		session.setAttribute("seBBSbTitle", seBBS.getbTitle());
+		session.setAttribute("seBBSbNum", seBBS.getbNum());
 		
 		return "bbsOpen";
 	}

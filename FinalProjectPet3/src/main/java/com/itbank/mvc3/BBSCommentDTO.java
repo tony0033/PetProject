@@ -2,7 +2,7 @@ package com.itbank.mvc3;
 
 public class BBSCommentDTO {
 	private int cNum;
-	private String bTitle;
+	private int bNum;
 	private String cId;
 	private String cComment;
 	private String cDate;
@@ -13,11 +13,11 @@ public class BBSCommentDTO {
 	public void setcNum(int cNum) {
 		this.cNum = cNum;
 	}
-	public String getbTitle() {
-		return bTitle;
+	public int getbNum() {
+		return bNum;
 	}
-	public void setbTitle(String bTitle) {
-		this.bTitle = bTitle;
+	public void setbNum(int bNum) {
+		this.bNum = bNum;
 	}
 	public String getcId() {
 		return cId;
