@@ -35,7 +35,7 @@
 
 	<!-- Main -->
 	<section id="main">
-		<div class="inner">
+		<div class="inner"> 
 			<header class="major special">
 				<h1>Elements</h1>
 				<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>

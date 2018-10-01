@@ -44,9 +44,22 @@ num int,
 id varchar(100)
 );
 
+create table bbsComment (
+cNum number,
+bTitle varchar(50),
+cId varchar(30),
+cComment varchar(1000),
+cDate varchar(30)
+);
+
 create sequence bNum
 start with 0
 increment by 1
 nomaxvalue
 minvalue -1;
 
+create sequence cNum
+start with 0
+increment by 1
+nomaxvalue
+minvalue -1;
