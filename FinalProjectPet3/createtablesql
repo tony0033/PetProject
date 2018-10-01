@@ -57,6 +57,20 @@ constraint "comment_fk" foreign key(bNum)
 references bbs(bNum) on delete cascade
 );
 
+create table video(
+no number,
+src varchar(500),
+title varchar(500),
+views varchar(100),
+type number
+);
+
+create table address(
+no number ,
+addr varchar(500),
+title varchar(500)
+);
+
 create sequence bNum
 start with 0
 increment by 1
