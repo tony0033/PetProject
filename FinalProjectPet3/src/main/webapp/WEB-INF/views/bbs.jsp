@@ -58,8 +58,7 @@
 								<c:forEach items="${bList}" var="bList">
 									<tr>
 										<td>${bList.bNum}</td>
-										<td class="title"><a
-											href="bbsOpen?bTitle=${bList.bTitle}">${bList.bTitle}</a></td>
+										<td><a href="bbsOpen.do?bTitle=${bList.bTitle}">${bList.bTitle}</a></td>
 										<td>${bList.bId}</td>
 										<td>${bList.bDate}</td>
 										<td>${bList.bDate}</td>
@@ -95,8 +94,8 @@
 				</header>
 				<div class="row uniform 50%">
 					<div class="6u 12u$(xsmall)">
-						<input type="text" name="bId"
-							value="<%=session.getAttribute("id")%>" style="display: none;">
+						<input type="hidden" name="bId"
+							value="<%=session.getAttribute("id")%>">
 						<input type="text" name="bTitle" placeholder="제목">
 					</div>
 					<div class="6u$ 12u$(xsmall)">
