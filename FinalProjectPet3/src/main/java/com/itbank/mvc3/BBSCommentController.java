@@ -16,10 +16,11 @@ public class BBSCommentController {
 	BBSCommentDAO bbsCommentDAO;
 
 	@RequestMapping("bbsComment")
-	@ResponseBody
-	public String bbsCommentInsert(BBSCommentDTO bbsCommentDTO, Model model) {
+	public @ResponseBody ArrayList<BBSCommentDTO> bbsCommentInsert(BBSCommentDTO bbsCommentDTO, Model model) {
 		bbsCommentDAO.insert(bbsCommentDTO);
-		return "success";
+		ArrayList<BBSCommentDTO> commentList = (ArrayList<BBSCommentDTO>) bbsCommentDAO.select(bbsCommentDTO);
+		model.addAttribute("commentList", commentList);
+		return commentList;
 	}
 	
 	@RequestMapping("bbsCommentList")
