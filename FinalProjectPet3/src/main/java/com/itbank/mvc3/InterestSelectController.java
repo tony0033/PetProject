@@ -21,14 +21,21 @@ public class InterestSelectController {
 	
 	
 
-	@RequestMapping("InterestSelect2.do")
-	public String select(HttpServletRequest request, Model model,  HttpSession session) throws Exception {
-		String id1 = request.getParameter("id");
+	@RequestMapping("InterestSelect2")
+	public String select(HttpServletRequest request, Model model,  HttpSession session,InterestDTO intdto) throws Exception {
+		String id1 = (String) session.getAttribute("id");
+		intdto.setId(id1);
+		ArrayList<InterestDTO> list  = (ArrayList<InterestDTO>) interestDAO.select(intdto);
+		ArrayList<ProductDTO> list2 = new ArrayList<ProductDTO>();
+		for (int i = 0; i < list.size(); i++) {
+			intdto = list.get(i);
+			ProductDTO productDTO = new ProductDTO();
+			productDTO.setNum(intdto.getNum());
+			productDTO= dao.select(productDTO);
+			list2.add(productDTO);
+		}
 		
-		InterestDTO dto = interestDAO.selectId(id1);
-		
-		model.addAttribute("list", dto);
-		
+		model.addAttribute("list", list2);
 		return "InterestselectAllResult";
 	}
 	/*@RequestMapping("InterestSelect3.do")

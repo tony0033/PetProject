@@ -66,7 +66,7 @@ String nickname = (String)session.getAttribute("nickname");
 	if(id != null){
 		%>
 		<h2><%= nickname %>님 환영합니다.</h2>
-		<a href="InterestSelect.jsp">rr</a>
+		<a href="InterestSelect.jsp">장바구니 확인</a>
 		<%
 	}
 	%>
