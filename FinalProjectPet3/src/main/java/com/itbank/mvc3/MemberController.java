@@ -45,6 +45,12 @@ public class MemberController {
 	public String callback() {
 		return "callback";
 	}
+	
+	@RequestMapping("memberLogout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:main.jsp";
+	}
 
 	@RequestMapping("memberSearchId")
 	public String searchid(HttpServletRequest request, Model model, HttpSession session) {
