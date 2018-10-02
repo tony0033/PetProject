@@ -128,8 +128,7 @@
 							<ul class="actions fit">
 								<li><input type="text" name="bCategory"
 									value="${seBBS.bCategory}" readonly="readonly"></li>
-								<li><input type="text" name="bId" value="${seBBS.bId}"
-									readonly="readonly"></li>
+								<li>${seBBS.bId}</li>
 							</ul>
 						</div>
 						<div class="6u$ 12u$(xsmall)">
@@ -190,7 +189,7 @@
 							<input type="hidden" name="bNum" id="bNum"
 								value="<%=session.getAttribute("seBBSbNum")%>"> <input
 								type="hidden" name="cId" id="cId"
-								value="<%=session.getAttribute("id")%>"> <input
+								value="<%=session.getAttribute("nickname")%>"> <input
 								type="hidden" name="cDate" id="cDate" value="<%=today%>">
 							<textarea name="cComment" id="cComment" rows="2"></textarea>
 						</div>

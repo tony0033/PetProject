@@ -102,7 +102,7 @@
 				<div class="row uniform 50%">
 					<div class="6u 12u$(xsmall)">
 						<input type="hidden" name="bId"
-							value="<%=session.getAttribute("id")%>">
+							value="<%=session.getAttribute("nickname")%>">
 						<input type="text" name="bTitle" placeholder="제목">
 					</div>
 					<div class="6u$ 12u$(xsmall)">

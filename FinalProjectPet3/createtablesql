@@ -31,7 +31,7 @@ id varchar(30)
 
 create table bbs (
 bNum number,
-bId varchar(30),
+bId varchar(100),
 bTitle varchar(50),
 bDate varchar(30),
 bCategory varchar(30),
