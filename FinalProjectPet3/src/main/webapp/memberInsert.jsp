@@ -63,9 +63,13 @@
     }
 </script>
   <style type="text/css">
-  #sample6_address,#sample6_address2{
+  #address,#address2{
   width: 40%;
   display: inline;
+  }
+  #id{
+  width: 85%;
+  display: inline-block;
   }
   </style>
 </head>
