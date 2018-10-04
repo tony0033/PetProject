@@ -19,55 +19,61 @@
 <script src="resources/js/util.js"></script>
 <script src="resources/js/main.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script type="text/javascript">
+<script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+      $( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+  } );
+  </script>
+  <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script>
+    function sample6_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
-	//아이디 체크여부 확인 (아이디 중복일 경우 = 0 , 중복이 아닐경우 = 1 )
-	var idck = 0;
-	
-	$(function() {
-		//idck 버튼을 클릭했을 때 
-		$("#idck").click(function() {
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var fullAddr = ''; // 최종 주소 변수
+                var extraAddr = ''; // 조합형 주소 변수
 
-			//id 를 param.
-			var id = $("#id").val();
+                // 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    fullAddr = data.roadAddress;
 
-			$.ajax({
-				async : true,
-				type : 'POST',
-				data : id,
-				url : "idcheck.do",
-				dataType : "json",
-				contentType : "application/json; charset=UTF-8",
-				success : function(data) {
-					if (data.cnt > 0) {
-						alert("아이디가 존재합니다. 다른 아이디를 입력해주세요.");
-						//아이디가 존제할 경우 빨깡으로 , 아니면 파랑으로 처리하는 디자인
-						$("#divInputId").addClass("has-error")
-						$("#divInputId").removeClass("has-success")
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    fullAddr = data.jibunAddress;
+                }
 
-					} else {
-						alert("사용가능한 아이디입니다.");
-						//아이디가 존제할 경우 빨깡으로 , 아니면 파랑으로 처리하는 디자인
-						$("#divInputId").addClass("has-success")
-						$("#divInputId").removeClass("has-error")
-						//아이디가 중복하지 않으면  idck = 1 
-						idck = 1;
+                // 사용자가 선택한 주소가 도로명 타입일때 조합한다.
+                if(data.userSelectedType === 'R'){
+                    //법정동명이 있을 경우 추가한다.
+                    if(data.bname !== ''){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있을 경우 추가한다.
+                    if(data.buildingName !== ''){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
+                    fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
+                }
 
-					}
-				},
-				error : function(error) {
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('address').value = fullAddr;
 
-					alert("error : " + error);
-				}
-			});
-		});
-	});
-
-	$(function() {
-		$("#datepicker").datepicker();
-		$("#datepicker").datepicker("option", "dateFormat", "yy-mm-dd");
-	});
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById('address2').focus();
+            }
+        }).open();
+    }
 </script>
+  <style type="text/css">
+  #sample6_address,#sample6_address2{
+  width: 40%;
+  display: inline;
+  }
+  </style>
 </head>
 <body>
 
@@ -76,8 +82,16 @@
 		<div class="inner">
 			<a href="main.jsp" class="logo">introspect</a>
 			<nav id="nav">
-				<a href="main.jsp">Home</a> <a href="memberLogin.jsp" id="loginout">Login</a><a
-					href="generic.jsp">Generic</a> <a href="elements.jsp">Elements</a>
+			<%if(session.getAttribute("id")==null){ %>
+				<a href="memberLogin.jsp" id="loginout">로그인</a> 
+				<%}
+			else{  %>
+				<a href="memberLogout" id="loginout">로그아웃</a>
+				<% } %>
+				
+				<a
+					href="petHospital.jsp">동물병원 찾기</a><a href="bbs.jsp">게시판</a><a
+					href="diarymain.jsp">일기</a> <a href="ProductSelect.jsp">쇼핑</a>
 			</nav>
 		</div>
 	</header>
@@ -111,7 +125,9 @@
 								</tr>
 								<tr>
 									<td>주소</td>
-									<td><input type="text" name="address"></td>
+									<td><input type="text" id="address" class="d_form std" placeholder="주소">  &nbsp&nbsp&nbsp
+									<input type="text" id="address2" class="d_form" placeholder="상세주소">
+									<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" class="d_btn"></td>
 								</tr>
 								<tr>
 									<td>전화번호</td>

@@ -7,8 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="InterestSelect2">
-<input type="submit" value="장바구니 확인">
-</form>
+
+<jsp:forward page="InterestSelect2"></jsp:forward>
+
 </body>
 </html>

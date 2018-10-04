@@ -2,6 +2,7 @@ package com.itbank.mvc3;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,7 @@ public class BBSController {
 	public String bbsSelect(BBSDTO bbsDTO, HttpSession session, Model model) {
 		BBSDTO seBBS = bbsDAO.select(bbsDTO);
 		model.addAttribute("seBBS",seBBS);
+		model.addAttribute("seBBSbNum",seBBS.getbNum());
 		session.setAttribute("seBBSid", seBBS.getbId());
 		session.setAttribute("seBBSbNum", seBBS.getbNum());
 		

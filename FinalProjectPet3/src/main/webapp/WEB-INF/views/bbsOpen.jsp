@@ -20,87 +20,75 @@
 <script src="resources/js/skel.min.js"></script>
 <script src="resources/js/util.js"></script>
 <script src="resources/js/jquery-1.11.1.js"></script>
-<script src="resources/js/main.js"></script>
 <script type="text/javascript">
+
 	$(function() {
-		var bNum = session.getAttribute("seBBSbNum");
 		
-		$.ajax({
+		var bNum =<%=session.getAttribute("seBBSbNum")%>;
+		console.log(bNum);
+	 	 $.ajax({
             url:"bbsCommentList",
             data:{
-                commPageNum:commPageNum*10,
-               bNum: bNum
-            },
-            beforeSend:function() {
-                console.log("읽어오기 시작 전...");
-            },
-            complete:function() {
-                console.log("읽어오기 완료 후...");
+               "bNum": bNum
             },
             success:function(data) {
                 console.log("comment를 정상적으로 조회하였습니다.");
-                showHtml(data, commPageNum);
+                  showHtml(data);
                 
-                let position = $("#showComment table tr:last").position();
-                $('html, body').animate({scrollTop : position.top}, 400);        // 두 번째 param은 스크롤 이동하는 시간
+                 /*let position = $("#showComment table tr:last").position();
+                $('html, body').animate({scrollTop : position.top}, 400); */         // 두 번째 param은 스크롤 이동하는 시간
             }
-        })
+        })  
 
-		$("#bbsComment").on("submit", function() {
-			var bTitle = document.getElementById('bTitle').value;
-			var cId = document.getElementById('cId').value;
-			var cDate = document.getElementById('cDate').value;
-			var cComment = document.getElementById('cComment').value;
-
-			if(!cComment){
+		$("#bbsComment").click(function() {
+			console.log("ss");
+			var bTitle = $('#bTitle').val();
+			var bNum = $('#bNum').val();
+			var cId = $('#cId').val();
+			var cDate = $('#cDate').val();
+			var cComment = $('#cComment').val();
+			if(cComment == null){
 				alert("내용을 입력하세요.");
 				return false;
 			}
 			else{
 				$.ajax({
 					url : "bbsComment",
-					type : "post",
+					type : "get",
 					data : {
 						bTitle : bTitle,
 						cId : cId,
 						cDate : cDate,
-						cComment : cComment
+						cComment : cComment,
+						bNum : bNum
 					},
 					success : function(data) {
-						if (data.result == success) {
-							 console.log("comment가 정상적으로 입력되었습니다.");
-		                        $("#commentContent").val("");
-		                        showHtml(data.comments, 1);
-			return false;
+		                        $("#cComment").val("");
+		                        showHtml(data);
 						}
-					}
+					
+
 				});
 			}
 		});
-/* 
-	    function showHtml(data, commPageNum) {
+
+	    function showHtml(data) {
 	        let html = "<table class='table table-striped table-bordered' style='margin-top: 10px;'><tbody>";
 	        $.each(data, function(index, item) {
+	       	console.log(item.cId);
 	            html += "<tr align='center'>";
 	            html += "<td>" + (index+1) + "</td>";
-	            html += "<td>" + item.id + "</td>";
-	            html += "<td align='left'>" + item.commentContent + "</td>";
-	            let presentDay = item.commentDate.substring(0, 10);
-	            html += "<td>" + presentDay + "</td>";
+	            html += "<td>" + item.cId + "</td>";
+	            html += "<td align='left'>" + item.cComment + "</td>";
+	            html += "<td>" + item.cDate + "</td>";
 	            html += "</tr>";
 	        });
 	        html += "</tbody></table>";
-	        commPageNum = parseInt(commPageNum);        // 정수로 변경
-	        // commentCount는 동기화되어 값을 받아오기 때문에, 댓글 insert에 즉각적으로 처리되지 못한다.
-	        if("${article.commentCount}" > commPageNum * 10) {
-	            nextPageNum = commPageNum + 1;
-	            html +="<input type='button' class='btn btn-default' onclick='getComment(nextPageNum, event)' value='다음 comment 보기'>";
-	        }
 	        
 	        $("#table-wrapper").html(html);
 	        $("#cComment").val("");
 	    }
-	    */
+	    
 	});
 </script>
 </head>
@@ -111,9 +99,16 @@
 		<div class="inner">
 			<a href="main.jsp" class="logo">introspect</a>
 			<nav id="nav">
-				<a href="memberLogin.jsp" id="loginout">로그인</a> <a
+			<%if(session.getAttribute("id")==null){ %>
+				<a href="memberLogin.jsp" id="loginout">로그인</a> 
+				<%}
+			else{  %>
+				<a href="memberLogout" id="loginout">로그아웃</a>
+				<% } %>
+				
+				<a
 					href="petHospital.jsp">동물병원 찾기</a><a href="bbs.jsp">게시판</a><a
-					href="generic.jsp">Generic</a> <a href="elements.jsp">Elements</a>
+					href="diarymain.jsp">일기</a> <a href="ProductSelect.jsp">쇼핑</a>
 			</nav>
 		</div>
 	</header>
@@ -127,14 +122,13 @@
 					<div class="row uniform 50%">
 						<div class="12u$">
 							<input type="text" name="bTitle" value="${seBBS.bTitle}"
-								readonly="readonly">
+								readonly="readonly" id="bTitle">
 						</div>
 						<div class="6u 12u$(xsmall)">
 							<ul class="actions fit">
 								<li><input type="text" name="bCategory"
 									value="${seBBS.bCategory}" readonly="readonly"></li>
-								<li><input type="text" name="bId" value="${seBBS.bId}"
-									readonly="readonly"></li>
+								<li>${seBBS.bId}</li>
 							</ul>
 						</div>
 						<div class="6u$ 12u$(xsmall)">
@@ -170,12 +164,10 @@
 		<div class="inner">
 			<header class="major special"> </header>
 			<section>
-				<c:if test="${ !empty cList }">
 					<h3>답변</h3>
-					<div class="table-wrapper">
+					<div id="table-wrapper">
 						
 					</div>
-				</c:if>
 			</section>
 		</div>
 	</section>
@@ -191,24 +183,23 @@
 					String today = sd.format(now);
 			%>
 			<section>
-				<form action="bbsComment" id="bbsComment">
+				
 					<div class="row uniform 50%">
 						<div class="12u$">
 							<input type="hidden" name="bNum" id="bNum"
 								value="<%=session.getAttribute("seBBSbNum")%>"> <input
 								type="hidden" name="cId" id="cId"
-								value="<%=session.getAttribute("id")%>"> <input
+								value="<%=session.getAttribute("nickname")%>"> <input
 								type="hidden" name="cDate" id="cDate" value="<%=today%>">
 							<textarea name="cComment" id="cComment" rows="2"></textarea>
 						</div>
 						<div class="12u$">
 							<ul class="actions">
-								<li><input type="submit" value="Send Message" class="alt"></li>
+								<li><button type="button" class="alt" id="bbsComment">전송</button></li>
 								<li><input type="reset" value="Reset"></li>
 							</ul>
 						</div>
 					</div>
-				</form>
 			</section>
 			<%
 				} else { //비 로그인시 글 읽기만 가능

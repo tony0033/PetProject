@@ -26,8 +26,16 @@
 		<div class="inner"> 
 			<a href="main.jsp" class="logo">introspect</a>
 			<nav id="nav">
-				<a href="main.jsp">Home</a> <a href="memberLogin.jsp" id="loginout">Login</a> <a
-					href="generic.jsp">Generic</a> <a href="elements.jsp">Elements</a>
+			<%if(session.getAttribute("id")==null){ %>
+				<a href="memberLogin.jsp" id="loginout">로그인</a> 
+				<%}
+			else{  %>
+				<a href="memberLogout" id="loginout">로그아웃</a>
+				<% } %>
+				
+				<a
+					href="petHospital.jsp">동물병원 찾기</a><a href="bbs.jsp">게시판</a><a
+					href="diarymain.jsp">일기</a> <a href="ProductSelect.jsp">쇼핑</a>
 			</nav>
 		</div>
 	</header>

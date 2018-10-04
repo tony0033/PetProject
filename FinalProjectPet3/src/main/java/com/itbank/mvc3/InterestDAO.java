@@ -25,12 +25,8 @@ public class InterestDAO {
 		myBatis.update("intSQL.update", dto);
 	}
 
-	public InterestDTO selectId(String id) {
-		return myBatis.selectOne("intSQL.select", id);
-	}
-	
-	public InterestDTO select(InterestDTO dto) {
-		return myBatis.selectOne("intSQL.select", dto);
+	public List<InterestDTO> select(InterestDTO dto) {
+		return myBatis.selectList("intSQL.select" ,dto);
 	}
 
 	public List<InterestDTO> selectAll() {
