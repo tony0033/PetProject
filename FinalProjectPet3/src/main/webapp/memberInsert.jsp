@@ -12,20 +12,14 @@
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="resources/css/main.css" />
+<link rel="stylesheet" href="resources/css/main.css"/>
 <link rel="stylesheet" href="resources/css/font-awesome.min.css">
 <script src="resources/js/jquery.min.js"></script>
 <script src="resources/js/skel.min.js"></script>
 <script src="resources/js/util.js"></script>
 <script src="resources/js/main.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script>
-  $( function() {
-    $( "#datepicker" ).datepicker();
-      $( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
-  } );
-  </script>
-  <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
     function sample6_execDaumPostcode() {
         new daum.Postcode({

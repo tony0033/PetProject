@@ -23,11 +23,6 @@ public class InsertController {
 		return "redirect:main.jsp";
 	}
 	
-	@RequestMapping("diaryinsert.do")
-	public String insert(DiaryDTO diaryDTO) {
-		diarydao.insert(diaryDTO);
-		return "redirect:diarymain.jsp";
-	}
 	
 }
 
