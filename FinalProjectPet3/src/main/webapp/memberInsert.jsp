@@ -19,12 +19,55 @@
 <script src="resources/js/util.js"></script>
 <script src="resources/js/main.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script>
-  $( function() {
-    $( "#datepicker" ).datepicker();
-      $( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
-  } );
-  </script>
+<script type="text/javascript">
+
+	//아이디 체크여부 확인 (아이디 중복일 경우 = 0 , 중복이 아닐경우 = 1 )
+	var idck = 0;
+	
+	$(function() {
+		//idck 버튼을 클릭했을 때 
+		$("#idck").click(function() {
+
+			//id 를 param.
+			var id = $("#id").val();
+
+			$.ajax({
+				async : true,
+				type : 'POST',
+				data : id,
+				url : "idcheck.do",
+				dataType : "json",
+				contentType : "application/json; charset=UTF-8",
+				success : function(data) {
+					if (data.cnt > 0) {
+						alert("아이디가 존재합니다. 다른 아이디를 입력해주세요.");
+						//아이디가 존제할 경우 빨깡으로 , 아니면 파랑으로 처리하는 디자인
+						$("#divInputId").addClass("has-error")
+						$("#divInputId").removeClass("has-success")
+
+					} else {
+						alert("사용가능한 아이디입니다.");
+						//아이디가 존제할 경우 빨깡으로 , 아니면 파랑으로 처리하는 디자인
+						$("#divInputId").addClass("has-success")
+						$("#divInputId").removeClass("has-error")
+						//아이디가 중복하지 않으면  idck = 1 
+						idck = 1;
+
+					}
+				},
+				error : function(error) {
+
+					alert("error : " + error);
+				}
+			});
+		});
+	});
+
+	$(function() {
+		$("#datepicker").datepicker();
+		$("#datepicker").datepicker("option", "dateFormat", "yy-mm-dd");
+	});
+</script>
 </head>
 <body>
 
@@ -51,7 +94,8 @@
 							<tbody>
 								<tr>
 									<td>아이디</td>
-									<td><input type="text" name="id"></td>
+									<td><input type="text" name="id" id="id"> <button
+											type="button" class="button alt small" id="idCh">중복확인</button></td>
 								</tr>
 								<tr>
 									<td>비밀번호</td>

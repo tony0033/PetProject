@@ -98,8 +98,9 @@
 							}
 
 						int start = (pageNum - 1) * 4;
-						int end = 4;
-						ArrayList list = dao.selectAll(start, end);
+						int end = start+3;
+					
+						ArrayList list = dao.selectAll(start,end);
 						for (int i = 0; i < list.size(); i++) {
 							
 							ColumnDTO dto1 = (ColumnDTO) list.get(i);
@@ -111,10 +112,10 @@
 							<!-- <input type="submit" class="button alt" value="read" width="10" height="5"> -->
 						</form>
 						<% 
-						}
+						} 
 						%>
 						<%
-						int max = dao.ListCount();
+						int max = dao.ColumnCount()/4;
 						for(int i=0;i<max;i++){
 						%>
 						<a href="main.jsp?pageNum=<%=i+1%>"><%=i+1 %></a>					

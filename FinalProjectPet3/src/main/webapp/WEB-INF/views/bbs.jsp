@@ -29,8 +29,7 @@
 			<a href="main.jsp" class="logo">introspect</a>
 			<nav id="nav">
 				<a href="memberLogin.jsp" id="loginout">로그인</a> <a
-					href="petHospital.jsp">동물병원 찾기</a><a href="bbs.jsp">게시판</a><a
-					href="generic.jsp">Generic</a> <a href="elements.jsp">Elements</a>
+					href="petHospital.jsp">동물병원 찾기</a><a href="bbs.jsp">게시판</a>
 			</nav>
 		</div>
 	</header>

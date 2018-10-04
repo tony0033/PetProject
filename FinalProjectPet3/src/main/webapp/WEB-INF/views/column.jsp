@@ -1,4 +1,4 @@
-<%@page import="com.itbank.mvc3.Crawling"%>
+<%@page import="com.itbank.mvc3.ColumnCrawling"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.itbank.mvc3.VideoDTO"%>
 <%@page import="com.itbank.mvc3.VideoDAO"%>
@@ -71,7 +71,7 @@
 			</section>
 		</div>
 	</section>
-
+ 
 	<!-- Footer -->
 	<section id="footer">
 		<div class="inner"></div>

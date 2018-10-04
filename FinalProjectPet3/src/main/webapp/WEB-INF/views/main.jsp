@@ -23,7 +23,7 @@
 
 	<!-- Header -->
 	<header id="header">
-		<div class="inner">
+		<div class="inner"> 
 			<a href="main.jsp" class="logo">introspect</a>
 			<nav id="nav">
 				<a href="main.jsp">Home</a> <a href="memberLogin.jsp" id="loginout">Login</a> <a

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="columnSQL">
+
+	<select id="select" parameterType="columnDTO" resultType="columnDTO">
+		SELECT * from diary where title = #{title} 
+	</select>
+
+	<resultMap type="columnDTO" id="rsMap">
+		<result property="addr" column="addr" />
+		<result property="title" column="title" />
+		<result property="no" column="no" />
+	</resultMap>
+	
+	<!-- <select id="selectAll" parameterType="java.lang.integer" resultType="rsMap">
+		[CDATA[SELECT * FROM address WHERE ROWNUM >= #{start} AND ROWNUM <= #{end}]]
+	</select>
+	 -->
+	<select id="selectCount" resultType="int">
+		SELECT COUNT(*) FROM address
+	</select>
+	
+	<insert id="insert" parameterType="columnDTO">
+		INSERT INTO diary VALUES(#{addr},#{title},no.NEXTVAL)	
+	</insert>
+
+	
+</mapper>
