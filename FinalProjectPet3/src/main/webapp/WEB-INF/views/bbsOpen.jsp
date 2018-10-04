@@ -1,3 +1,4 @@
+<%@page import="com.itbank.mvc3.BBSDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="java.util.*, java.text.*"%>
@@ -20,10 +21,9 @@
 <script src="resources/js/skel.min.js"></script>
 <script src="resources/js/util.js"></script>
 <script src="resources/js/jquery-1.11.1.js"></script>
+<script src="resources/js/main.js"></script>
 <script type="text/javascript">
-
 	$(function() {
-		
 		var bNum =<%=session.getAttribute("seBBSbNum")%>;
 		console.log(bNum);
 	 	 $.ajax({
@@ -34,9 +34,6 @@
             success:function(data) {
                 console.log("comment를 정상적으로 조회하였습니다.");
                   showHtml(data);
-                
-                 /*let position = $("#showComment table tr:last").position();
-                $('html, body').animate({scrollTop : position.top}, 400); */         // 두 번째 param은 스크롤 이동하는 시간
             }
         })  
 
@@ -66,8 +63,6 @@
 		                        $("#cComment").val("");
 		                        showHtml(data);
 						}
-					
-
 				});
 			}
 		});
@@ -88,7 +83,6 @@
 	        $("#table-wrapper").html(html);
 	        $("#cComment").val("");
 	    }
-	    
 	});
 </script>
 </head>
@@ -99,15 +93,19 @@
 		<div class="inner">
 			<a href="main.jsp" class="logo">introspect</a>
 			<nav id="nav">
-			<%if(session.getAttribute("id")==null){ %>
-				<a href="memberLogin.jsp" id="loginout">로그인</a> 
-				<%}
-			else{  %>
+				<%
+					if (session.getAttribute("id") == null) {
+				%>
+				<a href="memberLogin.jsp" id="loginout">로그인</a>
+				<%
+					} else {
+				%>
 				<a href="memberLogout" id="loginout">로그아웃</a>
-				<% } %>
-				
-				<a
-					href="petHospital.jsp">동물병원 찾기</a><a href="bbs.jsp">게시판</a><a
+				<%
+					}
+				%>
+
+				<a href="petHospital.jsp">동물병원 찾기</a><a href="bbs.jsp">게시판</a><a
 					href="diarymain.jsp">일기</a> <a href="ProductSelect.jsp">쇼핑</a>
 			</nav>
 		</div>
@@ -120,6 +118,8 @@
 			<section>
 				<form method="post" action="bbsQuestion">
 					<div class="row uniform 50%">
+						
+						
 						<div class="12u$">
 							<input type="text" name="bTitle" value="${seBBS.bTitle}"
 								readonly="readonly" id="bTitle">
@@ -128,24 +128,24 @@
 							<ul class="actions fit">
 								<li><input type="text" name="bCategory"
 									value="${seBBS.bCategory}" readonly="readonly"></li>
-								<li>${seBBS.bId}</li>
+								<li><input type="text" name="bCategory"
+									readonly="readonly">${seBBS.bId}</li>
 							</ul>
 						</div>
 						<div class="6u$ 12u$(xsmall)">
 							<ul class="actions fit small">
-								<li>조회수</li>
+								<li><input type="text" name="bDate" value="${seBBS.bView}"
+									readonly="readonly"></li>
 								<li><input type="text" name="bDate" value="${seBBS.bDate}"
 									readonly="readonly"></li>
-							</ul>
+							</ul> 
 						</div>
 						<div class="12u$">
 							<textarea name="bContent" rows="6" readonly="readonly">${seBBS.bContent}</textarea>
 						</div>
 						<%
-							String seBBS = (String) session.getAttribute("seBBS");
-
-							if (session.getAttribute("id") != null) {
-								if (session.getAttribute("id").equals("seBBSid")) {
+							if (session.getAttribute("nickname") != null) {
+								if (session.getAttribute("nickname").equals(session.getAttribute("seBBSid"))) {
 						%>
 						<div class="12u$">
 							<ul class="actions">
@@ -155,7 +155,7 @@
 						</div>
 						<%
 							}
-							} 
+							}
 						%>
 					</div>
 				</form>
@@ -164,10 +164,8 @@
 		<div class="inner">
 			<header class="major special"> </header>
 			<section>
-					<h3>답변</h3>
-					<div id="table-wrapper">
-						
-					</div>
+				<h3>답변</h3>
+				<div id="table-wrapper"></div>
 			</section>
 		</div>
 	</section>
@@ -183,23 +181,23 @@
 					String today = sd.format(now);
 			%>
 			<section>
-				
-					<div class="row uniform 50%">
-						<div class="12u$">
-							<input type="hidden" name="bNum" id="bNum"
-								value="<%=session.getAttribute("seBBSbNum")%>"> <input
-								type="hidden" name="cId" id="cId"
-								value="<%=session.getAttribute("nickname")%>"> <input
-								type="hidden" name="cDate" id="cDate" value="<%=today%>">
-							<textarea name="cComment" id="cComment" rows="2"></textarea>
-						</div>
-						<div class="12u$">
-							<ul class="actions">
-								<li><button type="button" class="alt" id="bbsComment">전송</button></li>
-								<li><input type="reset" value="Reset"></li>
-							</ul>
-						</div>
+
+				<div class="row uniform 50%">
+					<div class="12u$">
+						<input type="hidden" name="bNum" id="bNum"
+							value="<%=session.getAttribute("seBBSbNum")%>"> <input
+							type="hidden" name="cId" id="cId"
+							value="<%=session.getAttribute("nickname")%>"> <input
+							type="hidden" name="cDate" id="cDate" value="<%=today%>">
+						<textarea name="cComment" id="cComment" rows="2"></textarea>
 					</div>
+					<div class="12u$">
+						<ul class="actions">
+							<li><button type="button" class="alt" id="bbsComment">전송</button></li>
+							<li><input type="reset" value="Reset"></li>
+						</ul>
+					</div>
+				</div>
 			</section>
 			<%
 				} else { //비 로그인시 글 읽기만 가능
