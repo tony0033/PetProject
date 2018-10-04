@@ -68,7 +68,7 @@
 										<td><a href="bbsOpen.do?bTitle=${bList.bTitle}">${bList.bTitle}</a></td>
 										<td>${bList.bId}</td>
 										<td>${bList.bDate}</td>
-										<td>${bList.bDate}</td>
+										<td>${bList.bView}</td>
 									</tr>
 								</c:forEach>
 							</c:if>
