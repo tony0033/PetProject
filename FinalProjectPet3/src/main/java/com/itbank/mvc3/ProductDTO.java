@@ -6,13 +6,14 @@ String price;
 String img;
 String other;
 String link;
+int num;
+
 public String getLink() {
 	return link;
 }
 public void setLink(String link) {
 	this.link = link;
 }
-int num;
 public int getNum() {
 	return num;
 }

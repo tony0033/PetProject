@@ -4,14 +4,14 @@
 
 <mapper namespace="intSQL">
 
-	<select id="select" parameterType="interestDTO" resultType="interestDTO">
-		SELECT * from interest WHERE id = #{id}
-	</select>
 
 	<resultMap type="interestDTO" id="rsMap">
 		<result property="num" column="num" />
 		<result property="id" column="id" />
 	</resultMap>
+	<select id="select" parameterType="interestDTO" resultMap="rsMap">
+		SELECT * from interest WHERE id = #{id}
+	</select>
 
 	<select id="selectAll" resultMap="rsMap">
 		SELECT * FROM interest
