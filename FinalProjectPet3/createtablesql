@@ -18,7 +18,6 @@ img varchar(1000),
 other varchar(1000),
 link varchar(1000),
 num int
-other varchar(1000)
 );
 
 create table diary (
@@ -77,8 +76,30 @@ increment by 1
 nomaxvalue
 minvalue -1;
 
+
 create sequence cNum
 start with 0
 increment by 1
 nomaxvalue
 minvalue -1;
+
+create sequence coNum
+start with 0
+increment by 1
+nomaxvalue
+minvalue -1;
+
+create sequence no
+start with 0
+increment by 1
+nomaxvalue
+minvalue -1;
+
+create sequence bbb
+start with 0
+increment by 1
+nomaxvalue
+minvalue -1;
+
+
+

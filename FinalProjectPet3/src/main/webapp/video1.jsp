@@ -82,7 +82,19 @@
 					</div>
 					<div align="center">
 						<%
-							ArrayList<VideoDTO> list = dao1.selectAll(pageNum);
+							int start = 0;
+							int end = 0;
+							if(pageNum==1 || pageNum==2){
+								start = 1;
+								end = 5;
+							}else if(pageNum==9 || pageNum==10){
+								start = 6;
+								end = 10;
+							}else{
+								start = pageNum-2;
+								end = pageNum+2;
+							}
+							ArrayList<VideoDTO> list = dao1.selectAll(pageNum,start,end);
 											for(int i=0;i<list.size();i++){
 											VideoDTO dto2 = list.get(i);
 						%>

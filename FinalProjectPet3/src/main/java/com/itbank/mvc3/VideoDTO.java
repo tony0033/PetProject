@@ -5,6 +5,7 @@ public class VideoDTO {
 	private String src;
 	private String title;
 	private String views;
+	private int type;
 	public int getNo() {
 		return no;
 	}
@@ -28,6 +29,12 @@ public class VideoDTO {
 	}
 	public void setViews(String views) {
 		this.views = views;
+	}
+	public int getType() {
+		return type;
+	}
+	public void setType(int type) {
+		this.type = type;
 	}
 	
 	

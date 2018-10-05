@@ -4,25 +4,25 @@
 
 <mapper namespace="videoSQL">
 
-	<select id="select" parameterType="VideoDTO" resultType="VideoDTO">
-		SELECT * from diary where no = #{no} 
+	<select id="select" parameterType="int" resultType="videoDTO">
+		SELECT * from video WHERE no = #{pageNum} 
 	</select>
 
-	<resultMap type="VideoDTO" id="rsMap">
+	<resultMap type="videoDTO" id="rsMap">
 		<result property="no" column="no" />
 		<result property="src" column="src" />
 		<result property="title" column="title" />
 		<result property="views" column="views" />
+		<result property="type" column="type" />
 	</resultMap>
 
-	<select id="selectAll" parameterType="VideoDTO" resultMap="rsMap">
-		select * from video where no not in (?) limit ?,4
+	<select id="selectAll" parameterType="int" resultMap="rsMap">
+		<![CDATA[select * from video where no not in #{no} WHERE ROWNUM >= #{start} AND ROWNUM <= #{end}]]>
 	</select>
 
+	<select id="selectCount" resultType="int">
+		SELECT COUNT(*) FROM video
+	</select>
 
-
-	<delete id="delete" parameterType="diaryDTO">
-		DELETE FROM diary WHERE no = #{no}
-	</delete>
 
 </mapper>
