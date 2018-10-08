@@ -80,7 +80,7 @@
 	</section>
 
 	<!-- Two -->
-	<%-- <section id="two">
+	<section id="two">
 		<div class="inner">
 			<article>
 				<div class="content">
@@ -133,7 +133,7 @@
 						</div>
 				</div>
 			</article>
-			<article class="alt">
+			<%-- <article class="alt">
 				<div class="content">
 					<header>
 						<h3>동영상</h3>

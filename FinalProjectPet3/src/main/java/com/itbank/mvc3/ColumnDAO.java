@@ -16,7 +16,7 @@ public class ColumnDAO {
 	SqlSessionTemplate myBatis;
 	
 	public void insert(ColumnDTO dto){
-		myBatis.selectOne("columnSQL.insert", dto);
+		myBatis.insert("columnSQL.insert", dto);
 	}
 	
 	public ColumnDTO select(ColumnDTO dto){
