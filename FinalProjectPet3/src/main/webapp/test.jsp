@@ -30,7 +30,11 @@
 			SRC="D:\04_Messenger\감자도리\띠떼프_배경.gif" BORDER=0>
 
 		</a>
-
+		<button id="bu"
+			style="width: 2pt; height:30px; background-color: #FFFFFF !important; border: 0; outline:0;color: #758e26 !important;">안녕</button>
+		<table><tr><td onclick="bu">하이</td></tr></table>
 	</form>
+	<span id="location123" onclick="v">욥</span>
+	<div onclick="fn_detailView('www.daum.net')">라라라</div>
 </body>
 </html>
