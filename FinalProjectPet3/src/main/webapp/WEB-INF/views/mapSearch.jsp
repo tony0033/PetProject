@@ -49,7 +49,7 @@
 		<div class="inner">
 			<header class="major special">
 				<section>
-					<h1>동물병원 찾기</h1>
+					<h1>동물병원 찾기 - ${addr }</h1>
 					<hr>
 					<div id="map" style="width: 100%; height: 400px;"></div>
 					<script>
