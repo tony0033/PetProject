@@ -6,6 +6,7 @@ public class VideoDTO {
 	private String title;
 	private String views;
 	private int type;
+	
 	public int getNo() {
 		return no;
 	}

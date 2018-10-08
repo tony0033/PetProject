@@ -14,7 +14,7 @@
 		<result property="title" column="title" />
 	</resultMap>
 	
-	<select id="selectAll" parameterType="java.lang.integer" resultType="rsMap">
+	<select id="selectAll" parameterType="numDTO" resultMap="rsMap">
 		<![CDATA[SELECT * FROM address WHERE ROWNUM >= #{start} AND ROWNUM <= #{end}]]>
 	</select>
 	 

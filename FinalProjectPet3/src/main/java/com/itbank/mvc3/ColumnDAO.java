@@ -1,9 +1,6 @@
 package com.itbank.mvc3;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
+import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +34,8 @@ public class ColumnDAO {
 		rs = ps.executeQuery();
 	
 	}*/
-	public ArrayList<ColumnDTO> selectAll(int start,int end){
-		return myBatis.selectOne("columnSQL.selectAll");
+	public List<ColumnDTO> selectAll(NumDTO dto){
+		return myBatis.selectList("columnSQL.selectAll", dto);
 	}
 	
 	public int ColumnCount(){

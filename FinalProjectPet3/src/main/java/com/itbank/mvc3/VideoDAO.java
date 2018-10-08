@@ -1,8 +1,5 @@
 package com.itbank.mvc3;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -15,12 +12,12 @@ public class VideoDAO {
 	@Autowired
 	SqlSessionTemplate myBatis;
 	
-	public VideoDTO select(int pageNum) {
-		return myBatis.selectOne("videoSQL.select",pageNum);
+	public VideoDTO select(NumDTO dto) {
+		return myBatis.selectOne("videoSQL.select", dto);
 	}
-	
-	public ArrayList<VideoDTO> selectAll(int no, int start, int end) throws Exception {
-		return myBatis.selectOne("videoSQL.selectAll");
+
+	public ArrayList<VideoDTO> selectAll(NumDTO dto) throws Exception {
+		return myBatis.selectOne("videoSQL.selectAll", dto);
 	}
 	
 	public int IframeCount(){
