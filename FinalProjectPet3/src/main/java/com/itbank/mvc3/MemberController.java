@@ -1,11 +1,14 @@
 package com.itbank.mvc3;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,7 +48,7 @@ public class MemberController {
 	public String callback() {
 		return "callback";
 	}
-	
+
 	@RequestMapping("memberLogout")
 	public String logout(HttpSession session) {
 		session.invalidate();
@@ -96,32 +99,50 @@ public class MemberController {
 	}
 
 	@RequestMapping("insert.do")
-	public String insert(MemberDTO memberDTO) {
+	public String insert(MemberDTO memberDTO,HttpServletRequest request) {
+		String address = request.getParameter("address")+request.getParameter("address2");
+		memberDTO.setAddress(address);
+		System.out.println(address);
 		dao.insert(memberDTO);
 		return "redirect:main.jsp";
 	}
+
 	@RequestMapping("select.do")
-	public String select(@RequestParam("id") String id, 
-						MemberDTO memberDTO, 
-						Model model) throws Exception {
+	public String select(@RequestParam("id") String id, MemberDTO memberDTO, Model model) throws Exception {
 		MemberDTO memberDTO2 = dao.select(memberDTO);
-		//MemberDTO memberDTO2 = memberDAO.select(memberDTO.getId());
-		System.out.println("id : "+memberDTO2.getId());
-		System.out.println("pw : "+memberDTO2.getPw());
-		System.out.println("name : "+memberDTO2.getName());
-		System.out.println("tel : "+memberDTO2.getTel());
+		// MemberDTO memberDTO2 = memberDAO.select(memberDTO.getId());
+		System.out.println("id : " + memberDTO2.getId());
+		System.out.println("pw : " + memberDTO2.getPw());
+		System.out.println("name : " + memberDTO2.getName());
+		System.out.println("tel : " + memberDTO2.getTel());
 		model.addAttribute("memberDTO2", memberDTO2);
-		
+
 		return "selectResult";
 	}
-	
 
 	@RequestMapping("selectAll.do")
-	public String select(Model model, ArrayList<MemberDTO> list2) throws Exception {
+	public String select(Model model, ArrayList<MemberDTO> list2) throws Exception{
 		ArrayList list = (ArrayList) dao.selectAll();
 		model.addAttribute(list);
-		
+
 		return "selectAllResult";
+	}
+
+	@RequestMapping("memberIdCheck.do")
+	public String idCh(MemberDTO memberDTO, HttpServletResponse response) throws Exception {
+		boolean result = dao.select(memberDTO) != null;
+
+		response.setContentType("text/html;charset=euc-kr");
+		PrintWriter out = response.getWriter();
+
+		if (result)
+			out.println("0"); // 아이디 중복
+		else
+			out.println("1");
+
+		out.close();
+
+		return null;
 	}
 
 }
