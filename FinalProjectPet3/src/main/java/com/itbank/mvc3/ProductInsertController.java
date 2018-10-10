@@ -45,7 +45,7 @@ public class ProductInsertController {
 			
 			Elements name = doc.select("#goods_spec");
 			String name2 =  name.toString();
-				String name3 = name2.substring(name2.indexOf("<b>")+34,name2.indexOf("</b>")-8); //상품 이름
+				String name3 = name2.substring(name2.indexOf("<b>")+34,name2.indexOf("</b>")-7); //상품 이름
 				String other = name2.substring(name2.lastIndexOf("<b>")+34,name2.lastIndexOf("</b>")-7);//상품 기타 정보
 				all = price2+name3+other;
 				one = img2+ one + all + "<br>";
