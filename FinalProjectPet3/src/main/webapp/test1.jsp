@@ -10,7 +10,7 @@
     password="1234"
     var= "ds1"
     scope="page"/>
-<s:query sql="select * from video" var="rs1" dataSource="${ds1}" />
+<s:query sql="select * from address" var="rs1" dataSource="${ds1}" />
 
 
 

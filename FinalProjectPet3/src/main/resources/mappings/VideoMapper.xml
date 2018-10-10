@@ -19,7 +19,7 @@
 	
 
 	<select id="selectAll" parameterType="numDTO" resultMap="rsMap">
-		<![CDATA[select * from video where no not in #{no} WHERE ROWNUM >= #{start} AND ROWNUM <= #{end}]]>
+		select * from video where no != #{no} and (no between #{start} and #{end}) and type = #{type}
 	</select>
 
 	<select id="selectCount" resultType="int">
