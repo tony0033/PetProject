@@ -189,9 +189,9 @@
 								</tr>
 								<tr>
 									<td>주소</td>
-									<td><input type="text" id="address" class="d_form std"
+									<td><input type="text" name = "address" id="address" class="d_form std"
 										placeholder="주소"> &nbsp&nbsp&nbsp <input type="text"
-										id="address2" class="d_form" placeholder="상세주소"> <input
+										id="address2" name = "address2" class="d_form" placeholder="상세주소"> <input
 										type="button" onclick="sample6_execDaumPostcode()"
 										value="우편번호 찾기" class="d_btn"></td>
 								</tr>
