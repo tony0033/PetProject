@@ -85,7 +85,7 @@
 	<!-- Two -->
 	<section id="two">
 		<div class="inner">
-			<%--  <article>
+			<article>
 				<div class="content">
 					<header>
 						<h3>[Bodeum]강형욱 칼럼</h3>
@@ -114,8 +114,8 @@
 								start = (pageNum - 1) * 4;
 								end = start+3;
 							}
-
-					
+						%>
+						<%-- <%
 						NumDTO dto0 = new NumDTO(); 
 						dto0.setStart(start);
 						dto0.setEnd(end); 
@@ -140,11 +140,11 @@
 						<a href="main.jsp?pageNum=<%=i+1%>"><%=i+1 %></a>					
 						<%
 						}
-						%>
+						%> --%>
 						
 						</div>
 				</div>
-			</article>  --%>
+			</article>
 			<article class="alt">
 				<div class="content">
 					<header>
