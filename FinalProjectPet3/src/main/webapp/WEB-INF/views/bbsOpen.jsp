@@ -24,6 +24,23 @@
 <script src="resources/js/main.js"></script>
 <script src="resources/js/js-image-slider.js"></script>
 <script type="text/javascript">
+ function deletecomment(cNum){
+	var deleteComment = cNum;
+	var bNum = <%=session.getAttribute("seBBSbNum")%>;
+		$.ajax({
+				url : "bbsCommentDelete",
+				type : "get",
+				data : {
+					cNum : deleteComment,
+					bNum: bNum
+				},
+				success : function(data) {
+	                        $("#cComment").val("");
+	                         showHtml(data); 
+				}
+		});
+ 		 
+ 	 }
 	$(function() {
 		var bNum = <%=session.getAttribute("seBBSbNum")%>;
 		
@@ -66,9 +83,11 @@
 			}
 		});
 
+	 	
+	 	 
 	 	$("#bbsCommentDelete").click(function() {
+	 		
 			var deleteComment = $('#deleteComment').val();
-			console.log(deleteComment);
 			
 			$.ajax({
 					url : "bbsCommentDelete",
@@ -91,9 +110,9 @@
 	            html += "<tr align='center'>";
 	            html += "<td>" + item.cNum + "</td>";
 	            html += "<td>" + item.cId + "</td>";
-	            html += "<td align='left'><input type='hidden' name='cComment' id='deleteComment' value='"+item.cComment+"'>" + item.cComment + "</td>";
+	            html += "<td align='left'>" + item.cComment + "</td>";
 	    	if (nick == item.cId){
-	            html += "<td align='right'>" + item.cDate + "<button type='button' id='bbsCommentDelete' style='width:2pt; height:30px; background-color: #FFFFFF !important; color: #758e26 !important; border: 0; outline:0;'>[삭제]</button></td>";
+	            html += "<td align='right'>" + item.cDate + "<button type='button' onclick='deletecomment("+item.cNum+")' style='width:2pt; height:30px; background-color: #FFFFFF !important; color: #758e26 !important; border: 0; outline:0;'>[삭제]</button></td>";
 	    	}
 	    	else{
 	    		html += "<td align='right'>" + item.cDate + "</td>";
@@ -106,10 +125,35 @@
 	        $("#table-wrapper").html(html);
 	        $("#cComment").val("");
 	    }
+	    
 	});
+	   function showHtml(data) {
+	        let html = "<table class='table table-striped table-bordered' style='margin-top: 10px;'><tbody>";
+	        var nick = "<%=session.getAttribute("nickname")%>";
+	        
+	        $.each(data, function(index, item) {
+	            html += "<tr align='center'>";
+	            html += "<td>" + item.cNum + "</td>";
+	            html += "<td>" + item.cId + "</td>";
+	            html += "<td align='left'>" + item.cComment + "</td>";
+	    	if (nick == item.cId){
+	            html += "<td align='right'>" + item.cDate + "<button type='button' onclick='deletecomment("+item.cNum+")' style='width:2pt; height:30px; background-color: #FFFFFF !important; color: #758e26 !important; border: 0; outline:0;'>[삭제]</button></td>";
+	    	}
+	    	else{
+	    		html += "<td align='right'>" + item.cDate + "</td>";
+	    	}
+	    	
+	    	html += "</tr>";
+	        });
+	        html += "</tbody></table>";
+	        
+	        $("#table-wrapper").html(html);
+	        $("#cComment").val("");
+	    }
 </script>
 </head>
 <body>
+	<button onclick="deletecomment('113')">sss</button>
 
 	<!-- Header -->
 	<header id="header">

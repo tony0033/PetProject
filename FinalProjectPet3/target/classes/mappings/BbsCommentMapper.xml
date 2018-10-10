@@ -30,7 +30,7 @@
 	</update>
 	
 	<delete id="delete" parameterType="bbsDTO">
-		DELETE FROM bbsComment WHERE cComment = #{cComment}
+		DELETE FROM bbsComment WHERE cNum = #{cNum}
 	</delete>
 
 </mapper>
