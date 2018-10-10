@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <!--
 	Introspect by TEMPLATED
@@ -112,10 +112,9 @@ if(id!=null){
 					<input type="hidden" value=<%=id %> name="id">
 					<br>
 					<br>
-					<br>
 					<textarea name="content" id="smarteditor" rows="10" cols="100"
-						style="width: 70%; height: 350px;"></textarea>
-					<input type="button" id="savebutton" value="서버전송" />
+						style="width: 70%; height: 350px;"></textarea><br>
+					<input type="button" id="savebutton" class="button special" value="서버전송" />
 				</form>
 
 			</section>

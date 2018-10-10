@@ -38,7 +38,9 @@ public class EditorController {
 			// 파일명을 받는다 - 일반 원본파일명
 			String oldName = request.getHeader("file-name");
 			// 파일 기본경로 _ 상세경로
-			String filePath = "C:\\Users\\user\\git\\PetProject2\\FinalProjectPet3\\src\\main\\webapp\\resources\\photoUpload/";
+			//String filePath = "C:\\Users\\user\\git\\PetProject2\\FinalProjectPet3\\src\\main\\webapp\\resources\\photoUpload/";
+			String filePath = "C:\\Users\\user\\git\\PetProject\\FinalProjectPet3\\src\\main\\webapp\\resources\\photoUpload/";
+			
 			/*String filePath = "/mvc3/resources/photoUpload/";*/
 			String saveName = sb.append(new SimpleDateFormat("yyyyMMddHHmmss").format(System.currentTimeMillis()))
 								.append(UUID.randomUUID().toString())

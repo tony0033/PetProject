@@ -11,21 +11,22 @@
 -->
 <html>
 <head>
-<title>Elements - Introspect by TEMPLATED</title>
+<title>Introspect by TEMPLATED</title>
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="resources/css/main.css" />
 <link rel="stylesheet" href="resources/css/font-awesome.min.css">
+<link rel="stylesheet" href="resources/css/js-image-slider.css">
 <script src="resources/js/jquery.min.js"></script>
 <script src="resources/js/skel.min.js"></script>
 <script src="resources/js/util.js"></script>
-<script src="resources/js/jquery-1.11.1.js"></script>
 <script src="resources/js/main.js"></script>
+<script src="resources/js/js-image-slider.js"></script>
 <script type="text/javascript">
 	$(function() {
-		var bNum =<%=session.getAttribute("seBBSbNum")%>;
-		console.log(bNum);
+		var bNum = <%=session.getAttribute("seBBSbNum")%>;
+		
 	 	 $.ajax({
             url:"bbsCommentList",
             data:{
@@ -38,12 +39,11 @@
         })  
 
 		$("#bbsComment").click(function() {
-			console.log("ss");
-			var bTitle = $('#bTitle').val();
 			var bNum = $('#bNum').val();
 			var cId = $('#cId').val();
-			var cDate = $('#cDate').val();
 			var cComment = $('#cComment').val();
+			var cDate = $('#cDate').val();
+			
 			if(cComment == null){
 				alert("내용을 입력하세요.");
 				return false;
@@ -53,11 +53,10 @@
 					url : "bbsComment",
 					type : "get",
 					data : {
-						bTitle : bTitle,
+						bNum : bNum,
 						cId : cId,
-						cDate : cDate,
 						cComment : cComment,
-						bNum : bNum
+						cDate : cDate
 					},
 					success : function(data) {
 		                        $("#cComment").val("");
@@ -67,16 +66,40 @@
 			}
 		});
 
+	 	$("#bbsCommentDelete").click(function() {
+			var deleteComment = $('#deleteComment').val();
+			console.log(deleteComment);
+			
+			$.ajax({
+					url : "bbsCommentDelete",
+					type : "get",
+					data : {
+						cComment : deleteComment
+					},
+					success : function(data) {
+		                        $("#cComment").val("");
+		                        showHtml(data);
+					}
+			});
+		});
+	 	
 	    function showHtml(data) {
 	        let html = "<table class='table table-striped table-bordered' style='margin-top: 10px;'><tbody>";
+	        var nick = "<%=session.getAttribute("nickname")%>";
+	        
 	        $.each(data, function(index, item) {
-	       	console.log(item.cId);
 	            html += "<tr align='center'>";
-	            html += "<td>" + (index+1) + "</td>";
+	            html += "<td>" + item.cNum + "</td>";
 	            html += "<td>" + item.cId + "</td>";
-	            html += "<td align='left'>" + item.cComment + "</td>";
-	            html += "<td>" + item.cDate + "</td>";
-	            html += "</tr>";
+	            html += "<td align='left'><input type='hidden' name='cComment' id='deleteComment' value='"+item.cComment+"'>" + item.cComment + "</td>";
+	    	if (nick == item.cId){
+	            html += "<td align='right'>" + item.cDate + "<button type='button' id='bbsCommentDelete' style='width:2pt; height:30px; background-color: #FFFFFF !important; color: #758e26 !important; border: 0; outline:0;'>[삭제]</button></td>";
+	    	}
+	    	else{
+	    		html += "<td align='right'>" + item.cDate + "</td>";
+	    	}
+	    	
+	    	html += "</tr>";
 	        });
 	        html += "</tbody></table>";
 	        
@@ -116,93 +139,37 @@
 	<section id="main">
 		<div class="inner">
 			<section>
-				<form method="post" action="bbsQuestion">
-				<div class="table-wrapper">
-								<table class="alt">
-									<thead>
-										<tr>
-											<th>Name</th>
-											<th>Description</th>
-											<th>Price</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>Item 1</td>
-											<td>Ante turpis integer aliquet porttitor.</td>
-											<td>29.99</td>
-										</tr>
-										<tr>
-											<td>Item 2</td>
-											<td>Vis ac commodo adipiscing arcu aliquet.</td>
-											<td>19.99</td>
-										</tr>
-										<tr>
-											<td>Item 3</td>
-											<td> Morbi faucibus arcu accumsan lorem.</td>
-											<td>29.99</td>
-										</tr>
-										<tr>
-											<td>Item 4</td>
-											<td>Vitae integer tempus condimentum.</td>
-											<td>19.99</td>
-										</tr>
-										<tr>
-											<td>Item 5</td>
-											<td>Ante turpis integer aliquet porttitor.</td>
-											<td>29.99</td>
-										</tr>
-									</tbody>
-									<tfoot>
-										<tr>
-											<td colspan="2"></td>
-											<td>100.00</td>
-										</tr>
-									</tfoot>
-								</table>
-							</div>
-					<div class="row uniform 50%">
-						<div class="12u$">
-							<input type="text" name="bTitle" value="${seBBS.bTitle}"
-								readonly="readonly" id="bTitle">
-						</div>
-						<div class="6u 12u$(xsmall)">
-							<ul class="actions fit">
-								<li><input type="text" name="bCategory"
-									value="${seBBS.bCategory}" readonly="readonly"></li>
-								<li><input type="text" name="bCategory"
-									readonly="readonly">${seBBS.bId}</li>
-							</ul>
-						</div>
-						<div class="6u$ 12u$(xsmall)">
-							<ul class="actions fit small">
-								<li><input type="text" name="bDate" value="${seBBS.bView}"
-									readonly="readonly"></li>
-								<li><input type="text" name="bDate" value="${seBBS.bDate}"
-									readonly="readonly"></li>
-							</ul> 
-						</div>
-						<div class="12u$">
-							<textarea name="bContent" rows="6" readonly="readonly">${seBBS.bContent}</textarea>
-						</div>
-						<%
-							if (session.getAttribute("nickname") != null) {
-								if (session.getAttribute("nickname").equals(session.getAttribute("seBBSid"))) {
-						%>
-						<div class="12u$">
-							<ul class="actions">
-								<li><input type="submit" value="수정하기" class="alt"></li>
-								<li><input type="reset" value="삭제하기" class="alt"></li>
-							</ul>
-						</div>
-						<%
-							}
-							}
-						%>
+				<header>
+					<div class="12u$">
+						<h1>${seBBS.bTitle}</h1>
+						<p>작성자 ${seBBS.bId} | 분류 ${seBBS.bCategory} | 조회
+							${seBBS.bView} | ${seBBS.bDate}</p>
 					</div>
-				</form>
+				</header>
+				<hr>
+				<div class="12u$">
+					<textarea name="bContent" rows="6" readonly="readonly">${seBBS.bContent}</textarea>
+				</div>
+				<br>
+				<%
+					if (session.getAttribute("nickname") != null) {
+						if (session.getAttribute("nickname").equals(session.getAttribute("seBBSid"))) {
+				%>
+				<div class="12u$">
+					<ul class="actions">
+						<li><button type="button" class="alt"
+								onclick="location.href='bbsSelect?bTitle=${seBBS.bTitle}'">수정</button></li>
+						<li><button type="button" class="alt"
+								onclick="location.href='bbsDelete?bTitle=${seBBS.bTitle}'">삭제</button></li>
+					</ul>
+				</div>
+				<%
+					}
+					}
+				%>
 			</section>
 		</div>
+
 		<div class="inner">
 			<header class="major special"> </header>
 			<section>

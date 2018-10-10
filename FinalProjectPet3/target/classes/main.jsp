@@ -116,7 +116,7 @@
 							}
 
 					
-						NumDTO dto0 = new NumDTO();
+						NumDTO dto0 = new NumDTO(); 
 						dto0.setStart(start);
 						dto0.setEnd(end); 
 						List<ColumnDTO> list = dao.selectAll(dto0);

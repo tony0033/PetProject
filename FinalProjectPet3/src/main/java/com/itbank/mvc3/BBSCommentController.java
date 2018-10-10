@@ -1,7 +1,6 @@
 package com.itbank.mvc3;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,12 +19,21 @@ public class BBSCommentController {
 		bbsCommentDAO.insert(bbsCommentDTO);
 		ArrayList<BBSCommentDTO> commentList = (ArrayList<BBSCommentDTO>) bbsCommentDAO.select(bbsCommentDTO);
 		model.addAttribute("commentList", commentList);
+		
 		return commentList;
 	}
 	
 	@RequestMapping("bbsCommentList")
-	public @ResponseBody ArrayList<BBSCommentDTO> bbsSelect(BBSCommentDTO bbsCommentDTO, Model model){
+	public @ResponseBody ArrayList<BBSCommentDTO> bbsCommentSelect(BBSCommentDTO bbsCommentDTO, Model model){
+		ArrayList<BBSCommentDTO> commentList = (ArrayList<BBSCommentDTO>) bbsCommentDAO.select(bbsCommentDTO);
+		model.addAttribute("commentList", commentList);
 		
+		return commentList;
+	}
+	
+	@RequestMapping("bbsCommentDelete")
+	public @ResponseBody ArrayList<BBSCommentDTO> bbsCommentDelete(BBSCommentDTO bbsCommentDTO, Model model) {
+		bbsCommentDAO.delete(bbsCommentDTO);
 		ArrayList<BBSCommentDTO> commentList = (ArrayList<BBSCommentDTO>) bbsCommentDAO.select(bbsCommentDTO);
 		model.addAttribute("commentList", commentList);
 		
