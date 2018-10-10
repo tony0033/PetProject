@@ -11,8 +11,7 @@ public class BBSDAO {
 
 	@Autowired
 	SqlSessionTemplate myBatis;
-	
-	
+
 	public void insert(BBSDTO dto) {
 		myBatis.insert("bbsSQL.insert", dto);
 	}
@@ -31,5 +30,9 @@ public class BBSDAO {
 
 	public List<BBSDTO> selectAll() {
 		return myBatis.selectList("bbsSQL.selectAll");
+	}
+
+	public void bbsReadUpdate(int bView) {
+		myBatis.update("bbsReadUpdate", bView);
 	}
 }

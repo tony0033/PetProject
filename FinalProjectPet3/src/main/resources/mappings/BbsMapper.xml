@@ -15,6 +15,7 @@
 		<result property="bDate" column="bDate" />
 		<result property="bCategory" column="bCategory" />
 		<result property="bContent" column="bContent" />
+		<result property="bView" column="bView" />
 	</resultMap>
 
 	<select id="selectAll" resultMap="rsMap">
@@ -32,15 +33,13 @@
 		WHERE bId = #{bId}
 	</update>
 	
-	<update id="bbsUpdate" parameterType="bbsDTO">
-		UPDATE bbs SET
-		bView=#{bView+1}
-		WHERE bTitle=#{bTitle}
+	<update id="bbsReadUpdate" parameterType="int">
+		UPDATE bbs SET bView=bView+1
+		WHERE bNum=#{bNum}
 	</update>
 
 	<delete id="delete" parameterType="bbsDTO">
-		DELETE FROM bbs WHERE bTitle =
-		#{bTitle}
+		DELETE FROM bbs WHERE bTitle = #{bTitle}
 	</delete>
 
 </mapper>

@@ -18,6 +18,7 @@ public class PetHospitalController {
 	@RequestMapping("petHospital")
     public String PetHospital(HttpServletRequest request, Model model) {
 		String hospital = request.getParameter("petHospital");
+		model.addAttribute("addr", hospital);
 		
         String clientId = "jaG8KkSiXrEU9enGCL8N";	//애플리케이션 클라이언트 아이디값;
         String clientSecret = "rk7TR5x_fh";			//애플리케이션 클라이언트 시크릿값;

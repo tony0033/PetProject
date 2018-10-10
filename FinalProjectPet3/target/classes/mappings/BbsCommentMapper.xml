@@ -9,8 +9,6 @@
 	</select>
 
 	<resultMap type="bbsCommentDTO" id="rsMap">
-		<result property="cNum" column="cNum" />
-		<result property="bNum" column="bNum" />
 		<result property="cId" column="cId" />
 		<result property="cComment" column="cComment" />
 		<result property="cDate" column="cDate" />
@@ -27,13 +25,12 @@
 
 	<update id="update" parameterType="bbsDTO">
 		UPDATE bbsComment SET
-		bNum=#{bNum},cComment=#{cComment},cDate=#{cDate}
+		cComment=#{cComment},cDate=#{cDate}
 		WHERE cId = #{cId}
 	</update>
 	
 	<delete id="delete" parameterType="bbsDTO">
-		DELETE FROM bbsComment WHERE cComment =
-		#{cComment}
+		DELETE FROM bbsComment WHERE cComment = #{cComment}
 	</delete>
 
 </mapper>
