@@ -10,9 +10,9 @@
 		<typeAlias type="com.itbank.mvc3.BBSDTO" alias="bbsDTO"></typeAlias>
 		<typeAlias type="com.itbank.mvc3.InterestDTO" alias="interestDTO"></typeAlias>
 		<typeAlias type="com.itbank.mvc3.BBSCommentDTO" alias="bbsCommentDTO"></typeAlias>
-		<typeAlias type="com.itbank.mvc3.NumDTO" alias="numDTO"></typeAlias>
+		<!-- <typeAlias type="com.itbank.mvc3.NumDTO" alias="numDTO"></typeAlias>
 		<typeAlias type="com.itbank.mvc3.VideoDTO" alias="videoDTO"></typeAlias>
-		<typeAlias type="com.itbank.mvc3.ColumnDTO" alias="columnDTO"></typeAlias>
+		<typeAlias type="com.itbank.mvc3.ColumnDTO" alias="columnDTO"></typeAlias> -->
 	</typeAliases>
 
 	<mappers>
@@ -22,7 +22,7 @@
 		<mapper resource="mappings/MemberMapper.xml" />
 		<mapper resource="mappings/ProductMapper.xml" />
 		<mapper resource="mappings/InterestMapper.xml" />
-		<mapper resource="mappings/VideoMapper.xml" />
-	 	<mapper resource="mappings/ColumnMapper.xml" />
+	<!-- 	<mapper resource="mappings/VideoMapper.xml" />
+	 	<mapper resource="mappings/ColumnMapper.xml" /> -->
 	</mappers>
 </configuration>
