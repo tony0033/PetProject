@@ -71,7 +71,7 @@ float: left;
 		</div>
 	</section>
 
-	<!-- One -->
+	<%-- <!-- One -->
 	<section id="one">
 		<div class="inner">
 			<header>
@@ -101,12 +101,12 @@ float: left;
 				<li><a href="#" class="button alt">Learn More</a></li>
 			</ul>
 		</div>
-	</section>
+	</section> --%>
 
 	<!-- Two -->
 	<section id="two">
 		<div class="inner">
-			<%--  <article>
+			<article>
 				<div class="content">
 					<header>
 						<h3>[Bodeum]강형욱 칼럼</h3>
@@ -135,8 +135,8 @@ float: left;
 								start = (pageNum - 1) * 4;
 								end = start+3;
 							}
-
-					
+						%>
+						<%-- <%
 						NumDTO dto0 = new NumDTO(); 
 						dto0.setStart(start);
 						dto0.setEnd(end); 
@@ -161,11 +161,11 @@ float: left;
 						<a href="main.jsp?pageNum=<%=i+1%>"><%=i+1 %></a>					
 						<%
 						}
-						%>
+						%> --%>
 						
 						</div>
 				</div>
-			</article>  --%>
+			</article>
 			<article class="alt">
 				<div class="content">
 					<header>
@@ -199,7 +199,7 @@ float: left;
 		</div>
 	</section> 
 
-	<!-- Three -->
+	<!-- <!-- Three -->
 	<section id="three">
 		<div class="inner">
 			<article>
@@ -247,7 +247,7 @@ float: left;
 	<!-- Footer -->
 	<section id="footer">
 		<div class="inner">
-			<header>
+			<!-- <header>
 				<h2>Get in Touch</h2>
 			</header>
 			<form method="post" action="#">
@@ -270,7 +270,7 @@ float: left;
 			<div class="copyright">
 				&copy; Untitled Design: <a href="https://templated.co/">TEMPLATED</a>.
 				Images <a href="https://unsplash.com/">Unsplash</a>
-			</div>
+			</div> -->
 		</div>
 	</section>
 </body>
