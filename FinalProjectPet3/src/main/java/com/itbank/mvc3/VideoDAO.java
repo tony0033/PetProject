@@ -16,7 +16,7 @@ public class VideoDAO {
 		return myBatis.selectOne("videoSQL.select", dto);
 	}
 
-	public ArrayList<VideoDTO> selectAll(NumDTO dto) throws Exception {
+	public ArrayList<VideoDTO> selectAll(NumDTO dto) {
 		return myBatis.selectOne("videoSQL.selectAll", dto);
 	}
 	

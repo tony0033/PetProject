@@ -105,7 +105,11 @@
 								pageNum = 1;
 								start = 1;
 								end = 4;
-							} else {
+							} else if(request.getParameter("pageNum").equals("1")){
+								pageNum=1;
+								start = 1;
+								end = 4;
+							}else{
 								pageNum = Integer.parseInt(request.getParameter("pageNum"));
 								start = (pageNum - 1) * 4;
 								end = start+3;
@@ -114,7 +118,7 @@
 					
 						NumDTO dto0 = new NumDTO();
 						dto0.setStart(start);
-						dto0.setEnd(end);
+						dto0.setEnd(end); 
 						List<ColumnDTO> list = dao.selectAll(dto0);
 						for (int i = 0; i < list.size(); i++) {
 							
