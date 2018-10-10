@@ -1,3 +1,4 @@
+<%@page import="com.itbank.mvc3.NumDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.itbank.mvc3.VideoDTO"%>
 <%@page import="com.itbank.mvc3.VideoDAO"%>
@@ -41,21 +42,28 @@
 	<section id="main">
 		<div class="inner">
 			<section>
-				<h3><a href="video1.jsp">견종백과</a> | 
-					<a href="video2.jsp">세나개</a> | 
-					<a href="video3.jsp">소소한 Q&A</a></h3>
+				<h3><a href="video.jsp?type=1">견종백과</a> | 
+					<a href="video.jsp?type=2">세나개</a> | 
+					<a href="video.jsp?type=3">소소한 Q&A</a></h3>
 				<div class="table-wrapper">
 					<%
 						VideoDAO dao1 = new VideoDAO();
-												int pageNum;
-												if (request.getParameter("pageNum") == null) {
-														pageNum = 1;
-													} else {
-														pageNum = Integer.parseInt(request.getParameter("pageNum"));
-													}
-									
-												VideoDTO dto1 = dao1.select(pageNum);
-												int cnt = dao1.IframeCount();
+															int pageNum, type;
+															if(request.getParameter("type") == null){
+																type = 1;
+															}else{
+																 type = Integer.parseInt(request.getParameter("type"));
+															}	
+															if (request.getParameter("pageNum") == null) {
+																	pageNum = 1;
+																} else {
+																	pageNum = Integer.parseInt(request.getParameter("pageNum"));
+																}
+															NumDTO dto0 = new NumDTO();
+															dto0.setNo(pageNum);
+															dto0.setType(type);
+															VideoDTO dto1 = dao1.select(dto0);
+															int cnt = dao1.IframeCount();
 					%>
 					<div align="center">
 						<h3><%=dto1.getTitle()%></h3>
@@ -66,16 +74,16 @@
 						<%
 													if(pageNum==1){
 												%> 
-							<img src="resources/images/button2.png" onclick="location.href='video1.jsp?pageNum=<%=pageNum + 1%>'">
+							<img src="resources/images/button2.png" onclick="location.href='video.jsp?pageNum=<%=pageNum + 1%>,type=<%=type%>'">
 						<%
 							}else if(pageNum==cnt){
 						%>
-							<img src="resources/images/button1.png" onclick="location.href='video1.jsp?pageNum=<%=pageNum - 1%>'">
+							<img src="resources/images/button1.png" onclick="location.href='video.jsp?pageNum=<%=pageNum - 1%>,type=<%= type%>'">
 						<%
 							}else{
 						%>	
-							<img src="resources/images/button1.png" onclick="location.href='video1.jsp?pageNum=<%=pageNum - 1%>'">
-							<img src="resources/images/button2.png" onclick="location.href='video1.jsp?pageNum=<%=pageNum + 1%>'">
+							<img src="resources/images/button1.png" onclick="location.href='video.jsp?pageNum=<%=pageNum - 1%>,type=<%= type%>'">
+							<img src="resources/images/button2.png" onclick="location.href='video.jsp?pageNum=<%=pageNum + 1%>,type=<%= type%>'">
 						<%
 							}
 						%>
@@ -94,7 +102,11 @@
 								start = pageNum-2;
 								end = pageNum+2;
 							}
-							ArrayList<VideoDTO> list = dao1.selectAll(pageNum,start,end);
+							
+							
+							dto0.setStart(start);
+							dto0.setEnd(end);
+							ArrayList<VideoDTO> list = dao1.selectAll(dto0);
 											for(int i=0;i<list.size();i++){
 											VideoDTO dto2 = list.get(i);
 						%>

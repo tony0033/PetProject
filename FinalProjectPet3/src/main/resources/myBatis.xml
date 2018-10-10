@@ -21,5 +21,6 @@
 		<property name="url" value="${jdbc.url}"></property>
 		<property name="username" value="${jdbc.id}"></property>
 		<property name="password" value="${jdbc.pw}"></property>
+		<property name="defaultAutoCommit" value="true"></property>
 	</bean>
 </beans>
