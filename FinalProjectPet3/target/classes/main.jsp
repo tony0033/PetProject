@@ -85,7 +85,7 @@
 	<!-- Two -->
 	<section id="two">
 		<div class="inner">
-			<article>
+			<%--  <article>
 				<div class="content">
 					<header>
 						<h3>[Bodeum]강형욱 칼럼</h3>
@@ -144,7 +144,7 @@
 						
 						</div>
 				</div>
-			</article>
+			</article>  --%>
 			<article class="alt">
 				<div class="content">
 					<header>

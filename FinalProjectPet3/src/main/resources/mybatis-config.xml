@@ -23,6 +23,6 @@
 		<mapper resource="mappings/ProductMapper.xml" />
 		<mapper resource="mappings/InterestMapper.xml" />
 		<mapper resource="mappings/VideoMapper.xml" />
-	 <mapper resource="mappings/ColumnMapper.xml" />
+	 	<mapper resource="mappings/ColumnMapper.xml" />
 	</mappers>
 </configuration>

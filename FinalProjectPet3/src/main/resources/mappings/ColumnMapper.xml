@@ -5,7 +5,9 @@
 <mapper namespace="columnSQL">
 
 	<select id="select" parameterType="columnDTO" resultType="columnDTO">
-		SELECT * from address where title = #{title} 
+		SELECT * 
+		FROM address 
+		WHERE title = #{title} 
 	</select>
 
 	<resultMap type="columnDTO" id="rsMap">
@@ -15,7 +17,9 @@
 	</resultMap>
 	
 	<select id="selectAll" parameterType="numDTO" resultMap="rsMap">
-		SELECT * FROM address WHERE no between #{start} and #{end}
+		SELECT * 
+		FROM address 
+		WHERE no between #{start} and #{end}
 	</select>
 	
 	<select id="selectCount" resultType="int">
