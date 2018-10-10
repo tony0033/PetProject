@@ -24,6 +24,13 @@
 <script src="resources/js/util.js"></script>
 <script src="resources/js/main.js"></script>
 <script src="resources/js/js-image-slider.js"></script>
+<style type="text/css">
+table {
+width: 600px;
+heigth: 400px;
+float: left;
+}
+</style>
 </head>
 <body>
 
@@ -67,12 +74,26 @@
 			<header>
 				<h2>Magna Etiam Lorem</h2>
 			</header>
-			<p>Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a
-				diam sit amet mi ullamcorper vehicula. Integer adipiscin sem. Nullam
-				quis massa sit amet nibh viverra malesuada. Nunc sem lacus, accumsan
-				quis, faucibus non, congue vel, arcu, erisque hendrerit tellus.
-				Integer sagittis. Vivamus a mauris eget arcu gravida tristique. Nunc
-				iaculis mi in ante.</p>
+			<c:forEach items="${list}" var="list">
+			<table border="1" bordercolor="red"> 
+
+		     <tr>
+				<td colspan="2"><a type="hidden" href="${list.link}">${list.img}</a></td>
+			</tr>
+			<tr>
+				<td style="color:gray;" id="word" bgcolor="black">이름</td>
+				<td bgcolor="gray">${list.name}</td>
+			</tr>
+			<tr>
+				<td style="color:gray;" id="word" bgcolor="black">가격</td>
+				<td bgcolor="gray">${list.price}</td>
+			</tr>
+			<tr>
+				<td style="color:gray;" id="word" bgcolor="black">정보</td>
+				<td bgcolor="gray">${list.other}</td>
+			</tr> 
+			</table>
+			</c:forEach>
 			<ul class="actions">
 				<li><a href="#" class="button alt">Learn More</a></li>
 			</ul>
