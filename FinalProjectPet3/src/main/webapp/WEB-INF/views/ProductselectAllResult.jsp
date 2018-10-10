@@ -88,7 +88,6 @@ button {
 			<c:forEach items="${list}" var="list">
 				<div id="tb1" class="table-wrapper">
 					<table class="alt">
-
 						<tr>
 							<td colspan="2"><a type="hidden" href="${list.link}">${list.img}</a></td>
 						</tr>
@@ -109,7 +108,7 @@ button {
 						%>
 						<tr>
 							<td colspan="2"><button
-									onclick="location.href='interestInput?num=${list.num}&id=<%= id %>'" >장바구니에
+									onclick="location.href='interestInput?num=${list.num}&id=<%= id %>'" class="button special">장바구니에
 									담기</button></td>
 						</tr>
 						<%
