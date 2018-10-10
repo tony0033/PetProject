@@ -24,7 +24,7 @@
 	</select>
 
 	<insert id="insert" parameterType="memDTO">
-		INSERT INTO MEMBER VALUES(#{id},#{pw},#{nickname},#{name},#{address},#{tel},#{birth},#{pethospital})	
+		INSERT INTO MEMBER VALUES(#{id},#{pw},#{nickname},#{name},#{tel},#{address},#{birth},null)	
 	</insert>
 
 	<update id="update" parameterType="memDTO">

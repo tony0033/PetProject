@@ -99,8 +99,9 @@ public class MemberController {
 	}
 
 	@RequestMapping("insert.do")
-	public String insert(MemberDTO memberDTO,HttpServletRequest request) {
-		String address = request.getParameter("address")+request.getParameter("address2");
+	public String insert(MemberDTO memberDTO,@RequestParam("address") String address,@RequestParam("address2") String address2,HttpServletRequest request) {
+		System.out.println(memberDTO.getAddress());
+		address += address2;
 		memberDTO.setAddress(address);
 		System.out.println(address);
 		dao.insert(memberDTO);
@@ -111,10 +112,6 @@ public class MemberController {
 	public String select(@RequestParam("id") String id, MemberDTO memberDTO, Model model) throws Exception {
 		MemberDTO memberDTO2 = dao.select(memberDTO);
 		// MemberDTO memberDTO2 = memberDAO.select(memberDTO.getId());
-		System.out.println("id : " + memberDTO2.getId());
-		System.out.println("pw : " + memberDTO2.getPw());
-		System.out.println("name : " + memberDTO2.getName());
-		System.out.println("tel : " + memberDTO2.getTel());
 		model.addAttribute("memberDTO2", memberDTO2);
 
 		return "selectResult";
