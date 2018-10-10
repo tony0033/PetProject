@@ -71,7 +71,7 @@ float: left;
 		</div>
 	</section>
 
-	<!-- One -->
+	<%-- <!-- One -->
 	<section id="one">
 		<div class="inner">
 			<header>
@@ -101,7 +101,7 @@ float: left;
 				<li><a href="#" class="button alt">Learn More</a></li>
 			</ul>
 		</div>
-	</section>
+	</section> --%>
 
 	<!-- Two -->
 	<section id="two">
@@ -199,7 +199,7 @@ float: left;
 		</div>
 	</section> 
 
-	<!-- Three -->
+	<!-- <!-- Three -->
 	<section id="three">
 		<div class="inner">
 			<article>
@@ -247,7 +247,7 @@ float: left;
 	<!-- Footer -->
 	<section id="footer">
 		<div class="inner">
-			<header>
+			<!-- <header>
 				<h2>Get in Touch</h2>
 			</header>
 			<form method="post" action="#">
@@ -270,7 +270,7 @@ float: left;
 			<div class="copyright">
 				&copy; Untitled Design: <a href="https://templated.co/">TEMPLATED</a>.
 				Images <a href="https://unsplash.com/">Unsplash</a>
-			</div>
+			</div> -->
 		</div>
 	</section>
 </body>
