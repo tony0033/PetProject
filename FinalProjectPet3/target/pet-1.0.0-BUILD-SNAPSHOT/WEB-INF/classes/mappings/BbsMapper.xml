@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="bbsSQL">
+
+	<select id="select" parameterType="bbsDTO" resultType="bbsDTO">
+		SELECT *
+		from bbs where bTitle=#{bTitle}
+	</select>
+
+	<resultMap type="bbsDTO" id="rsMap">
+		<result property="bId" column="bId" />
+		<result property="bTitle" column="bTitle" />
+		<result property="bDate" column="bDate" />
+		<result property="bCategory" column="bCategory" />
+		<result property="bContent" column="bContent" />
+		<result property="bView" column="bView" />
+	</resultMap>
+
+	<select id="selectAll" resultMap="rsMap">
+		SELECT * FROM bbs order by bNum desc
+	</select>
+
+	<insert id="insert" parameterType="bbsDTO">
+		INSERT INTO bbs
+		VALUES(bNum.nextval,#{bId},#{bTitle},#{bDate},#{bCategory},#{bContent},0)
+	</insert>
+
+	<update id="update" parameterType="bbsDTO">
+		UPDATE bbs SET
+		bTitle=#{bTitle},bDate=#{bDate},bCategory=#{bCategory},bContent=#{bContent}
+		WHERE bId = #{bId}
+	</update>
+	
+	<update id="bbsReadUpdate" parameterType="int">
+		UPDATE bbs SET bView=bView+1
+		WHERE bNum=#{bNum}
+	</update>
+
+	<delete id="delete" parameterType="bbsDTO">
+		DELETE FROM bbs WHERE bTitle = #{bTitle}
+	</delete>
+
+</mapper>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="memSQL">
+
+	<select id="select" parameterType="memDTO" resultType="memDTO">
+		SELECT * from member where id = #{id}
+	</select>
+
+	<resultMap type="memDTO" id="rsMap">
+		<result property="id" column="id" />
+		<result property="pw" column="pw" />
+		<result property="nickname" column="nickname" />
+		<result property="name" column="name" />
+		<result property="address" column="address" />
+		<result property="tel" column="tel" />
+		<result property="birth" column="birth" />
+		<result property="pethospital" column="pethospital" />
+	</resultMap>
+
+	<select id="selectAll" resultMap="rsMap">
+		SELECT * FROM member
+	</select>
+
+	<insert id="insert" parameterType="memDTO">
+		INSERT INTO MEMBER VALUES(#{id},#{pw},#{nickname},#{name},#{tel},#{address},#{birth},null)	
+	</insert>
+
+	<update id="update" parameterType="memDTO">
+		UPDATE member SET tel = #{tel}, address = #{address} WHERE id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="memDTO">
+		DELETE FROM member WHERE id = #{id}
+	</delete>
+
+</mapper>

@@ -1,7 +1,7 @@
-<%@page import="com.itbank.mvc3.ColumnCrawling"%>
+<%@page import="com.itbank.pet.column.ColumnCrawling"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.itbank.mvc3.VideoDTO"%>
-<%@page import="com.itbank.mvc3.VideoDAO"%>
+<%@page import="com.itbank.pet.video.VideoDTO"%>
+<%@page import="com.itbank.pet.video.VideoDAO"%>
 <%@page import="org.jsoup.*"%>
 <%@page import="org.jsoup.nodes.Document, org.jsoup.nodes.Element, org.jsoup.select.Elements"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

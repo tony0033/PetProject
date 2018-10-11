@@ -1,4 +1,4 @@
-<%@page import="com.itbank.mvc3.BBSDAO"%>
+<%@page import="com.itbank.pet.bbs.BBSDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="java.util.*, java.text.*"%>

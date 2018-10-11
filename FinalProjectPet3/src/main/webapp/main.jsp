@@ -1,10 +1,10 @@
 <%@page import="java.util.List"%>
-<%@page import="com.itbank.mvc3.NumDTO"%>
-<%@page import="com.itbank.mvc3.VideoDTO"%>
-<%@page import="com.itbank.mvc3.ColumnDTO"%>
+<%@page import="com.itbank.pet.column.NumDTO"%>
+<%@page import="com.itbank.pet.video.VideoDTO"%>
+<%@page import="com.itbank.pet.column.ColumnDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Random"%>
-<%@page import="com.itbank.mvc3.ColumnDAO"%>
+<%@page import="com.itbank.pet.column.ColumnDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>

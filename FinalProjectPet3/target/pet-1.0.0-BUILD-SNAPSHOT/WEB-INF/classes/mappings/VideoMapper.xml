@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="videoSQL">
+
+	<select id="select" parameterType="numDTO" resultType="videoDTO">
+		SELECT * from video where no = #{no} and type = #{type}
+	</select>
+	
+
+	<resultMap type="videoDTO" id="rsMap">
+		<result property="no" column="no" />
+		<result property="src" column="src" />
+		<result property="title" column="title" />
+		<result property="views" column="views" />
+		<result property="type" column="type" />
+	</resultMap>
+	
+
+	<select id="selectAll" parameterType="numDTO" resultMap="rsMap">
+		select * from video where no != #{no} and (no between #{start} and #{end}) and type = #{type}
+	</select>
+
+	<select id="selectCount" resultType="int">
+		SELECT COUNT(*) FROM video
+	</select>
+
+
+</mapper>

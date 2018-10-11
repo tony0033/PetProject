@@ -4,15 +4,15 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.itbank.mvc3.MemberDTO" alias="memDTO"></typeAlias>
-		<typeAlias type="com.itbank.mvc3.ProductDTO" alias="productDTO"></typeAlias>
-		<typeAlias type="com.itbank.mvc3.DiaryDTO" alias="diaryDTO"></typeAlias>
-		<typeAlias type="com.itbank.mvc3.BBSDTO" alias="bbsDTO"></typeAlias>
-		<typeAlias type="com.itbank.mvc3.InterestDTO" alias="interestDTO"></typeAlias>
-		<typeAlias type="com.itbank.mvc3.BBSCommentDTO" alias="bbsCommentDTO"></typeAlias>
-		<!-- <typeAlias type="com.itbank.mvc3.NumDTO" alias="numDTO"></typeAlias>
-		<typeAlias type="com.itbank.mvc3.VideoDTO" alias="videoDTO"></typeAlias>
-		<typeAlias type="com.itbank.mvc3.ColumnDTO" alias="columnDTO"></typeAlias> -->
+		<typeAlias type="com.itbank.pet.member.MemberDTO" alias="memDTO"></typeAlias>
+		<typeAlias type="com.itbank.pet.product.ProductDTO" alias="productDTO"></typeAlias>
+		<typeAlias type="com.itbank.pet.diary.DiaryDTO" alias="diaryDTO"></typeAlias>
+		<typeAlias type="com.itbank.pet.bbs.BBSDTO" alias="bbsDTO"></typeAlias>
+		<typeAlias type="com.itbank.pet.interest.InterestDTO" alias="interestDTO"></typeAlias>
+		<typeAlias type="com.itbank.pet.bbsComment.BBSCommentDTO" alias="bbsCommentDTO"></typeAlias>
+		<!-- <typeAlias type="com.itbank.pet.column.NumDTO" alias="numDTO"></typeAlias>
+		<typeAlias type="com.itbank.pet.video.VideoDTO" alias="videoDTO"></typeAlias>
+		<typeAlias type="com.itbank.pet.column.ColumnDTO" alias="columnDTO"></typeAlias> -->
 	</typeAliases>
 
 	<mappers>

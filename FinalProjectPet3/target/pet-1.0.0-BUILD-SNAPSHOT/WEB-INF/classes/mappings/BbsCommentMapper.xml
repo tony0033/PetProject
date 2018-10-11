@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="bbsCommentSQL">
+
+	<select id="select" parameterType="bbsCommentDTO" resultMap="rsMap">
+		SELECT * from bbsComment where bNum=#{bNum}
+	</select>
+
+	<resultMap type="bbsCommentDTO" id="rsMap">
+		<result property="cId" column="cId" />
+		<result property="cComment" column="cComment" />
+		<result property="cDate" column="cDate" />
+	</resultMap>
+
+	<select id="selectAll" resultMap="rsMap">
+		SELECT * FROM bbsComment
+	</select>
+
+	<insert id="insert" parameterType="bbsDTO">
+		INSERT INTO bbsComment
+		VALUES(cNum.nextval,#{bNum},#{cId},#{cComment},#{cDate})
+	</insert>
+
+	<update id="update" parameterType="bbsDTO">
+		UPDATE bbsComment SET
+		cComment=#{cComment},cDate=#{cDate}
+		WHERE cId = #{cId}
+	</update>
+	
+	<delete id="delete" parameterType="bbsDTO">
+		DELETE FROM bbsComment WHERE cNum = #{cNum}
+	</delete>
+
+</mapper>
