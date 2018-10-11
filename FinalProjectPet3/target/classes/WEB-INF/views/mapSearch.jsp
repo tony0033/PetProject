@@ -29,15 +29,19 @@
 		<div class="inner">
 			<a href="main.jsp" class="logo">introspect</a>
 			<nav id="nav">
-			<%if(session.getAttribute("id")==null){ %>
-				<a href="memberLogin.jsp" id="loginout">로그인</a> 
-				<%}
-			else{  %>
+				<%
+					if (session.getAttribute("id") == null) {
+				%>
+				<a href="memberLogin.jsp" id="loginout">로그인</a>
+				<%
+					} else {
+				%>
 				<a href="memberLogout" id="loginout">로그아웃</a>
-				<% } %>
-				
-				<a
-					href="petHospital.jsp">동물병원 찾기</a><a href="bbs.jsp">게시판</a><a
+				<%
+					}
+				%>
+
+				<a href="petHospital.jsp">동물병원 찾기</a><a href="bbs.jsp">게시판</a><a
 					href="diarymain.jsp">일기</a> <a href="ProductSelect.jsp">쇼핑</a>
 			</nav>
 		</div>
@@ -49,7 +53,7 @@
 		<div class="inner">
 			<header class="major special">
 				<section>
-					<h1>동물병원 찾기 - ${addr }</h1>
+					<h1>동물병원 찾기 - ${addr}</h1>
 					<hr>
 					<div id="map" style="width: 100%; height: 400px;"></div>
 					<script>
@@ -114,7 +118,6 @@
 										anchorColor : "#fff",
 										pixelOffset : new naver.maps.Point(20, -20)
 									});
-					
 									markers.push(marker); // 배열에 생성된 마커를 추가
 									infoWindows.push(infoWindow); // 배열에 생성된 정보창을 추가
 								}
@@ -127,12 +130,9 @@
 									var mapBounds = map.getBounds(); //map의 좌표를 반환
 									var marker,
 										position;
-					
 									for (var i = 0; i < markers.length; i++) {
-					
 										marker = markers[i]
 										position = marker.getPosition(); //지정 위치에 마커를 놓음
-					
 										if (mapBounds.hasLatLng(position)) { //객체의 좌표 내에 지정한 좌표가 있는지 확인
 											showMarker(map, marker);
 										} else {
@@ -140,23 +140,19 @@
 										}
 									}
 								}
-					
 								function showMarker(map, marker) { //좌표가 있다면 마커를 보여주세요
 									if (marker.setMap()) return;
 									marker.setMap(map);
 								}
-					
 								function hideMarker(map, marker) { //좌표가 없다면 마커를 보여주지 마세요
 									if (!marker.setMap()) return;
 									marker.setMap(null);
 								}
-					
 								// 해당 마커의 인덱스를 seq라는 클로저 변수로 저장하는 이벤트 핸들러를 반환합니다.
 								function getClickHandler(seq) {
 									return function(e) {
 										var marker = markers[seq],
 											infoWindow = infoWindows[seq];
-					
 										if (infoWindow.getMap()) { //정보창을 닫아라
 											infoWindow.close();
 										} else {
@@ -164,8 +160,6 @@
 										}
 									}
 								}
-					
-					
 								//클릭시 getClickHandler에서 발생한 이벤트를 받아 핸들러를 실행하는 리스너
 								for (var i = 0; i < markers.length; i++) {
 									naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i));
@@ -195,32 +189,7 @@
 
 	<!-- Footer -->
 	<section id="footer">
-		<div class="inner">
-			<header>
-				<h2>Get in Touch</h2>
-			</header>
-			<form method="post" action="#">
-				<div class="field half first">
-					<label for="name">Name</label> <input type="text" name="name"
-						id="name" />
-				</div>
-				<div class="field half">
-					<label for="email">Email</label> <input type="text" name="email"
-						id="email" />
-				</div>
-				<div class="field">
-					<label for="message">Message</label>
-					<textarea name="message" id="message" rows="6"></textarea>
-				</div>
-				<ul class="actions">
-					<li><input type="submit" value="Send Message" class="alt" /></li>
-				</ul>
-			</form>
-			<div class="copyright">
-				&copy; Untitled Design: <a href="https://templated.co/">TEMPLATED</a>.
-				Images <a href="https://unsplash.com/">Unsplash</a>
-			</div>
-		</div>
+		<div class="inner"></div>
 	</section>
 </body>
 </html>

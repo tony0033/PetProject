@@ -19,7 +19,7 @@
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="resources/css/main.css"/>
+<link rel="stylesheet" href="resources/css/main.css" />
 <link rel="stylesheet" href="resources/css/font-awesome.min.css">
 <link rel="stylesheet" href="resources/css/js-image-slider.css">
 <script src="resources/js/jquery.min.js"></script>
@@ -29,9 +29,9 @@
 <script src="resources/js/js-image-slider.js"></script>
 <style type="text/css">
 table {
-width: 600px;
-heigth: 400px;
-float: left;
+	width: 600px;
+	heigth: 400px;
+	float: left;
 }
 </style>
 </head>
@@ -42,15 +42,19 @@ float: left;
 		<div class="inner">
 			<a href="main.jsp" class="logo">introspect</a>
 			<nav id="nav">
-			<%if(session.getAttribute("id")==null){ %>
-				<a href="memberLogin.jsp" id="loginout">로그인</a> 
-				<%}
-			else{  %>
+				<%
+					if (session.getAttribute("id") == null) {
+				%>
+				<a href="memberLogin.jsp" id="loginout">로그인</a>
+				<%
+					} else {
+				%>
 				<a href="memberLogout" id="loginout">로그아웃</a>
-				<% } %>
-				
-				<a
-					href="petHospital.jsp">동물병원 찾기</a><a href="bbs.jsp">게시판</a><a
+				<%
+					}
+				%>
+
+				<a href="petHospital.jsp">동물병원 찾기</a><a href="bbs.jsp">게시판</a><a
 					href="diarymain.jsp">일기</a> <a href="ProductSelect.jsp">쇼핑</a>
 			</nav>
 		</div>
@@ -71,38 +75,6 @@ float: left;
 		</div>
 	</section>
 
-	<%-- <!-- One -->
-	<section id="one">
-		<div class="inner">
-			<header>
-				<h2>Magna Etiam Lorem</h2>
-			</header>
-			<c:forEach items="${list}" var="list">
-			<table border="1" bordercolor="red"> 
-
-		     <tr>
-				<td colspan="2"><a type="hidden" href="${list.link}">${list.img}</a></td>
-			</tr>
-			<tr>
-				<td style="color:gray;" id="word" bgcolor="black">이름</td>
-				<td bgcolor="gray">${list.name}</td>
-			</tr>
-			<tr>
-				<td style="color:gray;" id="word" bgcolor="black">가격</td>
-				<td bgcolor="gray">${list.price}</td>
-			</tr>
-			<tr>
-				<td style="color:gray;" id="word" bgcolor="black">정보</td>
-				<td bgcolor="gray">${list.other}</td>
-			</tr> 
-			</table>
-			</c:forEach>
-			<ul class="actions">
-				<li><a href="#" class="button alt">Learn More</a></li>
-			</ul>
-		</div>
-	</section> --%>
-
 	<!-- Two -->
 	<section id="two">
 		<div class="inner">
@@ -116,7 +88,7 @@ float: left;
 							Random random = new Random();
 							String num = String.valueOf(random.nextInt(5));
 						%>
-						<img src="resources/images/column<%=num %>.jpg" alt="" />
+						<img src="resources/images/column<%=num%>.jpg" alt="" />
 					</div>
 					<div align="center">
 						<%
@@ -126,44 +98,44 @@ float: left;
 								pageNum = 1;
 								start = 1;
 								end = 4;
-							} else if(request.getParameter("pageNum").equals("1")){
-								pageNum=1;
+							} else if (request.getParameter("pageNum").equals("1")) {
+								pageNum = 1;
 								start = 1;
 								end = 4;
-							}else{
+							} else {
 								pageNum = Integer.parseInt(request.getParameter("pageNum"));
 								start = (pageNum - 1) * 4;
-								end = start+3;
+								end = start + 3;
 							}
 						%>
-						<%-- <%
-						NumDTO dto0 = new NumDTO(); 
-						dto0.setStart(start);
-						dto0.setEnd(end); 
-						List<ColumnDTO> list = dao.selectAll(dto0);
-						for (int i = 0; i < list.size(); i++) {
-							
-							ColumnDTO dto1 = (ColumnDTO) list.get(i);
+						<%
+							NumDTO dto0 = new NumDTO();
+							dto0.setStart(start);
+							dto0.setEnd(end);
+							List<ColumnDTO> list = dao.selectAll(dto0);
+							for (int i = 0; i < list.size(); i++) {
+
+								ColumnDTO dto1 = (ColumnDTO) list.get(i);
 						%>
-						<form action = "column.do">
-							<input type="hidden" name="addr" value=<%=dto1.getAddr() %>>
-							<font color="#383d44" size="4"><%=dto1.getTitle() %></font>
-							<input type="image" src="resources/images/button2.png" name="submit" value="">
+						<form action="column.do">
+							<input type="hidden" name="addr" value=<%=dto1.getAddr()%>>
+							<font color="#383d44" size="4"><%=dto1.getTitle()%></font> <input
+								type="image" src="resources/images/button2.png" name="submit"
+								value="">
 							<!-- <input type="submit" class="button alt" value="read" width="10" height="5"> -->
 						</form>
-						<% 
-						} 
+						<%
+							}
 						%>
 						<%
-						int max = dao.ColumnCount()/4;
-						for(int i=0;i<max;i++){
+							int max = dao.ColumnCount() / 4;
+							for (int i = 0; i < max; i++) {
 						%>
-						<a href="main.jsp?pageNum=<%=i+1%>"><%=i+1 %></a>					
+						<a href="main.jsp?pageNum=<%=i + 1%>"><%=i + 1%></a>
 						<%
-						}
-						%> --%>
-						
-						</div>
+							}
+						%>
+					</div>
 				</div>
 			</article>
 			<article class="alt">
@@ -171,74 +143,25 @@ float: left;
 					<header>
 						<h3>동영상</h3>
 					</header>
-						<div id="slider">
-							<a href="video.jsp?type=1">
-								<img src="resources/images/video1.png"  alt="" /><br>
-							</a>
-							<a href="video.jsp?type=2">
-								<img src="resources/images/video2.png"  alt="" /><br>
-							</a>
-							<a href="video.jsp?type=3">
-								<img src="resources/images/video3.png"  alt="" /><br>
-							</a>
-						</div>
-						<br>
-						<div align="center">
-						<a href="video.jsp?type=1">
-							<font color="#383d44" size="4">#강형욱의 견종백과#</font><br>
+					<div id="slider">
+						<a href="video.jsp?type=1"> <img
+							src="resources/images/video1.png" alt="" /><br>
+						</a> <a href="video.jsp?type=2"> <img
+							src="resources/images/video2.png" alt="" /><br>
+						</a> <a href="video.jsp?type=3"> <img
+							src="resources/images/video3.png" alt="" /><br>
 						</a>
-						<a href="video.jsp?type=2">
-							<font color="#383d44" size="4">#세상에 나쁜 개는 없다#</font><br>
+					</div>
+					<br>
+					<div align="center">
+						<a href="video.jsp?type=1"> <font color="#383d44" size="4">#강형욱의
+								견종백과#</font><br>
+						</a> <a href="video.jsp?type=2"> <font color="#383d44" size="4">#세상에
+								나쁜 개는 없다#</font><br>
+						</a> <a href="video.jsp?type=3"> <font color="#383d44" size="4">#소소한
+								Q&A#</font>
 						</a>
-						<a href="video.jsp?type=3">
-							<font color="#383d44" size="4">#소소한 Q&A#</font>
-						</a>
-						</div>
-				</div>
-			</article>
-		</div>
-	</section> 
-
-	<!-- <!-- Three -->
-	<section id="three">
-		<div class="inner">
-			<article>
-				<div class="content">
-					<span class="icon fa-laptop"></span>
-					<header>
-						<h3>Tempus Feugiat</h3>
-					</header>
-					<p>Morbi interdum mollis sapien. Sed ac risus. Phasellus
-						lacinia, magna lorem ullamcorper laoreet, lectus arcu.</p>
-					<ul class="actions">
-						<li><a href="#" class="button alt">Learn More</a></li>
-					</ul>
-				</div>
-			</article>
-			<article>
-				<div class="content">
-					<span class="icon fa-diamond"></span>
-					<header>
-						<h3>Aliquam Nulla</h3>
-					</header>
-					<p>Ut convallis, sem sit amet interdum consectetuer, odio augue
-						aliquam leo, nec dapibus tortor nibh sed.</p>
-					<ul class="actions">
-						<li><a href="#" class="button alt">Learn More</a></li>
-					</ul>
-				</div>
-			</article>
-			<article>
-				<div class="content">
-					<span class="icon fa-laptop"></span>
-					<header>
-						<h3>Sed Magna</h3>
-					</header>
-					<p>Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque
-						a diam sit amet mi ullamcorper vehicula.</p>
-					<ul class="actions">
-						<li><a href="#" class="button alt">Learn More</a></li>
-					</ul>
+					</div>
 				</div>
 			</article>
 		</div>
@@ -246,32 +169,7 @@ float: left;
 
 	<!-- Footer -->
 	<section id="footer">
-		<div class="inner">
-			<!-- <header>
-				<h2>Get in Touch</h2>
-			</header>
-			<form method="post" action="#">
-				<div class="field half first">
-					<label for="name">Name</label> <input type="text" name="name"
-						id="name" />
-				</div>
-				<div class="field half">
-					<label for="email">Email</label> <input type="text" name="email"
-						id="email" />
-				</div>
-				<div class="field">
-					<label for="message">Message</label>
-					<textarea name="message" id="message" rows="6"></textarea>
-				</div>
-				<ul class="actions">
-					<li><input type="submit" value="Send Message" class="alt" /></li>
-				</ul>
-			</form>
-			<div class="copyright">
-				&copy; Untitled Design: <a href="https://templated.co/">TEMPLATED</a>.
-				Images <a href="https://unsplash.com/">Unsplash</a>
-			</div> -->
-		</div>
+		<div class="inner"></div>
 	</section>
 </body>
 </html>

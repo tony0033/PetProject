@@ -29,15 +29,19 @@
 		<div class="inner">
 			<a href="main.jsp" class="logo">introspect</a>
 			<nav id="nav">
-			<%if(session.getAttribute("id")==null){ %>
-				<a href="memberLogin.jsp" id="loginout">로그인</a> 
-				<%}
-			else{  %>
+				<%
+					if (session.getAttribute("id") == null) {
+				%>
+				<a href="memberLogin.jsp" id="loginout">로그인</a>
+				<%
+					} else {
+				%>
 				<a href="memberLogout" id="loginout">로그아웃</a>
-				<% } %>
-				
-				<a
-					href="petHospital.jsp">동물병원 찾기</a><a href="bbs.jsp">게시판</a><a
+				<%
+					}
+				%>
+
+				<a href="petHospital.jsp">동물병원 찾기</a><a href="bbs.jsp">게시판</a><a
 					href="diarymain.jsp">일기</a> <a href="ProductSelect.jsp">쇼핑</a>
 			</nav>
 		</div>
@@ -80,32 +84,7 @@
 
 	<!-- Footer -->
 	<section id="footer">
-		<div class="inner">
-			<header>
-				<h2>Get in Touch</h2>
-			</header>
-			<form method="post" action="#">
-				<div class="field half first">
-					<label for="name">Name</label> <input type="text" name="name"
-						id="name" />
-				</div>
-				<div class="field half">
-					<label for="email">Email</label> <input type="text" name="email"
-						id="email" />
-				</div>
-				<div class="field">
-					<label for="message">Message</label>
-					<textarea name="message" id="message" rows="6"></textarea>
-				</div>
-				<ul class="actions">
-					<li><input type="submit" value="Send Message" class="alt" /></li>
-				</ul>
-			</form>
-			<div class="copyright">
-				&copy; Untitled Design: <a href="https://templated.co/">TEMPLATED</a>.
-				Images <a href="https://unsplash.com/">Unsplash</a>
-			</div>
-		</div>
+		<div class="inner"></div>
 	</section>
 </body>
 </html>
