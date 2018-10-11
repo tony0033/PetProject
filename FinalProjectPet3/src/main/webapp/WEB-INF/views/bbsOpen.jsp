@@ -108,7 +108,6 @@
 	        
 	        $.each(data, function(index, item) {
 	            html += "<tr align='center'>";
-	            html += "<td>" + item.cNum + "</td>";
 	            html += "<td>" + item.cId + "</td>";
 	            html += "<td align='left'>" + item.cComment + "</td>";
 	    	if (nick == item.cId){
@@ -153,7 +152,6 @@
 </script>
 </head>
 <body>
-	<button onclick="deletecomment('113')">sss</button>
 
 	<!-- Header -->
 	<header id="header">

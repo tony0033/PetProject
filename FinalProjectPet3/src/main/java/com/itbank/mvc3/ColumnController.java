@@ -59,6 +59,6 @@ public class ColumnController {
 			
 		}
 		
-		return "insertOK";
+		return "redirect:main.jsp";
 	}
 }
